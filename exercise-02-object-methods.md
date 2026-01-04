@@ -1,28 +1,28 @@
-# תרגיל 2: מתודות באובייקטים
+# Exercise 2: Object Methods
 
-**רמת קושי:** קלה-בינונית ⭐⭐  
-**זמן משוער:** 45-60 דקות
+**Difficulty Level:** Easy-Medium ⭐⭐  
+**Estimated Time:** 45-60 minutes
 
-## מטרה
-להבין איך להוסיף פונקציות (מתודות) לאובייקטים ולהשתמש ב-`this`
+## Goal
+Understand how to add functions (methods) to objects and use `this`
 
 ---
 
-## חלק א': מחשבון בסיסי
+## Part A: Basic Calculator
 
-צור אובייקט `calculator` עם המאפיינים והמתודות הבאים:
+Create a `calculator` object with the following properties and methods:
 
-### מאפיינים:
-- `currentValue` - הערך הנוכחי (התחל מ-0)
+### Properties:
+- `currentValue` - the current value (start from 0)
 
-### מתודות:
-- `add(number)` - מוסיף מספר ל-currentValue
-- `subtract(number)` - מחסיר מספר מ-currentValue
-- `multiply(number)` - כופל את currentValue במספר
-- `reset()` - מאפס את currentValue
-- `getValue()` - מחזיר את הערך הנוכחי
+### Methods:
+- `add(number)` - adds a number to currentValue
+- `subtract(number)` - subtracts a number from currentValue
+- `multiply(number)` - multiplies currentValue by a number
+- `reset()` - resets currentValue
+- `getValue()` - returns the current value
 
-**כתוב את הקוד שלך כאן:**
+**Write your code here:**
 
 ```javascript
 const calculator = {
@@ -51,7 +51,7 @@ const calculator = {
 };
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 calculator.add(10);
@@ -69,9 +69,9 @@ console.log("After reset:", calculator.getValue()); // Should print 0
 
 ---
 
-## חלק ב': אובייקט Person
+## Part B: Person Object
 
-צור אובייקט `person` עם המתודות הבאות:
+Create a `person` object with the following methods:
 
 ```javascript
 const person = {
@@ -96,7 +96,7 @@ const person = {
 };
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("\n=== Person Object Test ===");
@@ -107,7 +107,7 @@ person.introduce(); // Should print age 26
 
 ---
 
-## פלט צפוי
+## Expected Output
 
 ```
 After adding 10: 10
@@ -122,17 +122,17 @@ Hello, my name is Danny Cohen and I'm 26 years old
 
 ---
 
-## טיפים
+## Tips
 
-- `this` מתייחס לאובייקט הנוכחי
-- מתודה היא פונקציה בתוך אובייקט
-- ניתן לקרוא למתודה: `object.method()`
-- מתודה אחת יכולה לקרוא למתודה אחרת: `this.otherMethod()`
+- `this` refers to the current object
+- A method is a function inside an object
+- You can call a method: `object.method()`
+- One method can call another method: `this.otherMethod()`
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. הוסף למחשבון מתודה `divide(number)`
-2. הוסף ל-person מתודה `getAgeInMonths()`
-3. צור אובייקט `bankAccount` עם מתודות deposit ו-withdraw
+1. Add a `divide(number)` method to the calculator
+2. Add a `getAgeInMonths()` method to person
+3. Create a `bankAccount` object with deposit and withdraw methods

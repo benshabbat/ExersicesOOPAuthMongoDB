@@ -1,21 +1,21 @@
-# תרגיל 1: יצירת אובייקטים בסיסיים
+# Exercise 1: Creating Basic Objects
 
-**רמת קושי:** קלה ⭐  
-**זמן משוער:** 30-45 דקות
+**Difficulty Level:** Easy ⭐  
+**Estimated Time:** 30-45 minutes
 
-## מטרה
-להבין את המושגים הבסיסיים של אובייקטים ב-JavaScript
+## Goal
+Understand the basic concepts of objects in JavaScript
 
 ---
 
-## חלק א': צור אובייקט שמייצג סטודנט
+## Part A: Create an Object Representing a Student
 
-צור אובייקט בשם `student` שמכיל את המאפיינים הבאים:
-- `name` - שם הסטודנט (מחרוזת)
-- `age` - גיל הסטודנט (מספר)
-- `averageGrade` - ממוצע ציונים (מספר)
+Create an object named `student` that contains the following properties:
+- `name` - student's name (string)
+- `age` - student's age (number)
+- `averageGrade` - grade average (number)
 
-**כתוב את הקוד שלך כאן:**
+**Write your code here:**
 
 ```javascript
 const student = {
@@ -25,9 +25,9 @@ const student = {
 
 ---
 
-## חלק ב': הדפס את המאפיינים
+## Part B: Print the Properties
 
-הדפס את כל המאפיינים של הסטודנט באמצעות `console.log`.
+Print all the student's properties using `console.log`.
 
 ```javascript
 console.log("Student name:", student.name);
@@ -36,9 +36,9 @@ console.log("Student name:", student.name);
 
 ---
 
-## חלק ג': הוסף מאפיין חדש
+## Part C: Add a New Property
 
-הוסף מאפיין `major` (מגמה/תואר) לאובייקט `student`.
+Add a `major` property (major/degree) to the `student` object.
 
 ```javascript
 // Add the 'major' property to the student object
@@ -46,9 +46,9 @@ console.log("Student name:", student.name);
 
 ---
 
-## חלק ד': שנה ערך
+## Part D: Change a Value
 
-עדכן את ערך `averageGrade` ל-95.
+Update the `averageGrade` value to 95.
 
 ```javascript
 // Update the averageGrade value
@@ -56,9 +56,9 @@ console.log("Student name:", student.name);
 
 ---
 
-## בדיקה
+## Testing
 
-הדפס את האובייקט המלא כדי לוודא שהכל עובד:
+Print the complete object to verify everything works:
 
 ```javascript
 console.log("\n=== Exercise 1 Test ===");
@@ -67,12 +67,12 @@ console.log("Complete object:", student);
 
 ---
 
-## פלט צפוי
+## Expected Output
 
 ```
-Student name: [השם שבחרת]
-Age: [הגיל שבחרת]
-Average grade: [הממוצע שבחרת]
+Student name: [the name you chose]
+Age: [the age you chose]
+Average grade: [the average you chose]
 
 === Exercise 1 Test ===
 Complete object: { name: '...', age: ..., averageGrade: 95, major: '...' }
@@ -80,18 +80,18 @@ Complete object: { name: '...', age: ..., averageGrade: 95, major: '...' }
 
 ---
 
-## טיפים
+## Tips
 
-- אובייקט ב-JavaScript נוצר עם סוגריים מסולסלים `{}`
-- מאפיינים מופרדים בפסיק `,`
-- ניתן לגשת למאפיין עם נקודה: `object.property`
-- ניתן להוסיף מאפיין חדש: `object.newProperty = value`
-- ניתן לשנות ערך: `object.property = newValue`
+- An object in JavaScript is created with curly braces `{}`
+- Properties are separated by commas `,`
+- You can access a property with a dot: `object.property`
+- You can add a new property: `object.newProperty = value`
+- You can change a value: `object.property = newValue`
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. הוסף מאפיין `courses` שהוא מערך של קורסים
-2. הוסף מאפיין `isActive` (boolean) שמציין אם הסטודנט פעיל
-3. צור עוד שני סטודנטים והדפס אותם
+1. Add a `courses` property that is an array of courses
+2. Add an `isActive` property (boolean) that indicates if the student is active
+3. Create two more students and print them

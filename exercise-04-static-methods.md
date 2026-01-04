@@ -1,16 +1,16 @@
-# תרגיל 4: מתודות סטטיות ו-this
+# Exercise 4: Static Methods and this
 
-**רמת קושי:** בינונית ⭐⭐⭐  
-**זמן משוער:** 60-90 דקות
+**Difficulty Level:** Medium ⭐⭐⭐  
+**Estimated Time:** 60-90 minutes
 
-## מטרה
-להבין את השימוש ב-`this` ובמתודות סטטיות
+## Goal
+Understand the use of `this` and static methods
 
 ---
 
-## חלק א': מחלקת Car
+## Part A: Car Class
 
-צור מחלקה `Car` עם מתודות רגילות ומתודות סטטיות.
+Create a `Car` class with regular methods and static methods.
 
 ```javascript
 class Car {
@@ -51,7 +51,7 @@ class Car {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("=== Car Class Test ===");
@@ -69,9 +69,9 @@ console.log(Car.compare(car1, car2));
 
 ---
 
-## חלק ב': מחלקת Temperature
+## Part B: Temperature Class
 
-צור מחלקה `Temperature` למרות טמפרטורה.
+Create a `Temperature` class for temperature conversions.
 
 ```javascript
 class Temperature {
@@ -106,7 +106,7 @@ class Temperature {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("\n=== Temperature Class Test ===");
@@ -120,9 +120,9 @@ console.log(`68°F = ${temp2.celsius}°C`);
 
 ---
 
-## חלק ג': מחלקת Counter
+## Part C: Counter Class
 
-צור מחלקה `Counter` עם מאפיינים סטטיים.
+Create a `Counter` class with static properties.
 
 ```javascript
 class Counter {
@@ -157,7 +157,7 @@ class Counter {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("\n=== Counter Class Test ===");
@@ -180,7 +180,7 @@ console.log(`Counter ${counter3.id}: ${counter3.value}`);
 
 ---
 
-## פלט צפוי
+## Expected Output
 
 ```
 === Car Class Test ===
@@ -205,18 +205,18 @@ Counter 3: 0
 
 ---
 
-## טיפים
+## Tips
 
-- **מתודה רגילה**: נקראת על מופע - `object.method()`
-- **מתודה סטטית**: נקראת על המחלקה - `Class.method()`
-- **מאפיין סטטי**: שייך למחלקה, לא למופע
-- `this` בתוך מתודה רגילה מתייחס למופע
-- אין `this` במתודה סטטית
+- **Regular method**: Called on an instance - `object.method()`
+- **Static method**: Called on the class - `Class.method()`
+- **Static property**: Belongs to the class, not to the instance
+- `this` inside a regular method refers to the instance
+- There is no `this` in a static method
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. הוסף ל-Car מתודה סטטית `getOldestCar()`
-2. צור מחלקה `IDGenerator` עם מתודה סטטית `generateID()`
-3. הוסף ל-Temperature המרה ל-Rankine
+1. Add a static method `getOldestCar()` to Car
+2. Create an `IDGenerator` class with a static method `generateID()`
+3. Add conversion to Rankine to Temperature

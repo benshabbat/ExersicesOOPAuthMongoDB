@@ -1,16 +1,16 @@
-# תרגיל 5: Arrays של אובייקטים ומתודות מורכבות
+# Exercise 5: Arrays of Objects and Complex Methods
 
-**רמת קושי:** בינונית-גבוהה ⭐⭐⭐  
-**זמן משוער:** 60-90 דקות
+**Difficulty Level:** Medium-High ⭐⭐⭐  
+**Estimated Time:** 60-90 minutes
 
-## מטרה
-לעבוד עם מערכים של אובייקטים ומתודות מורכבות יותר
+## Goal
+Work with arrays of objects and more complex methods
 
 ---
 
-## חלק א': מחלקת Product
+## Part A: Product Class
 
-צור מחלקה `Product` למוצרים בחנות.
+Create a `Product` class for store products.
 
 ```javascript
 class Product {
@@ -50,9 +50,9 @@ class Product {
 
 ---
 
-## חלק ב': מחלקת Store
+## Part B: Store Class
 
-צור מחלקה `Store` שמנהלת חנות.
+Create a `Store` class that manages a store.
 
 ```javascript
 class Store {
@@ -99,7 +99,7 @@ class Store {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("=== Store System Test ===");

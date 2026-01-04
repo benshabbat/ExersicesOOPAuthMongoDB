@@ -1,16 +1,16 @@
-# תרגיל 3: מבוא ל-Classes
+# Exercise 3: Introduction to Classes
 
-**רמת קושי:** בינונית ⭐⭐  
-**זמן משוער:** 60 דקות
+**Difficulty Level:** Medium ⭐⭐  
+**Estimated Time:** 60 minutes
 
-## מטרה
-להבין איך ליצור מחלקות, קונסטרקטורים, ולעבוד עם מופעים
+## Goal
+Understand how to create classes, constructors, and work with instances
 
 ---
 
-## חלק א': מחלקת Book
+## Part A: Book Class
 
-צור מחלקה `Book` שמייצגת ספר.
+Create a `Book` class that represents a book.
 
 ```javascript
 class Book {
@@ -32,7 +32,7 @@ class Book {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 const book1 = new Book("Harry Potter", "J.K. Rowling", 450);
@@ -47,9 +47,9 @@ console.log("Is long book?", book2.isLongBook());
 
 ---
 
-## חלק ב': מחלקת BankAccount
+## Part B: BankAccount Class
 
-צור מחלקה `BankAccount` לניהול חשבון בנק.
+Create a `BankAccount` class for managing a bank account.
 
 ```javascript
 class BankAccount {
@@ -86,11 +86,11 @@ class BankAccount {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("\n=== BankAccount Class Test ===");
-const account1 = new BankAccount("Yossi Levi", 1000);
+const account1 = new BankAccount("John Smith", 1000);
 account1.getAccountInfo();
 account1.deposit(500);
 account1.withdraw(200);
@@ -100,9 +100,9 @@ account1.getAccountInfo();
 
 ---
 
-## חלק ג': מחלקת Rectangle
+## Part C: Rectangle Class
 
-צור מחלקה `Rectangle` למלבן.
+Create a `Rectangle` class for a rectangle.
 
 ```javascript
 class Rectangle {
@@ -127,7 +127,7 @@ class Rectangle {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("\n=== Rectangle Class Test ===");
@@ -144,7 +144,7 @@ console.log(`Is square? ${rect2.isSquare()}`);
 
 ---
 
-## פלט צפוי
+## Expected Output
 
 ```
 === Book Class Test ===
@@ -154,11 +154,11 @@ Book: The Alchemist, Author: Paulo Coelho, Pages: 180
 Is long book? false
 
 === BankAccount Class Test ===
-Account owner: Yossi Levi, Balance: 1000
+Account owner: John Smith, Balance: 1000
 Deposited 500. New balance: 1500
 Withdrew 200. New balance: 1300
 Error: Not enough money in account
-Account owner: Yossi Levi, Balance: 1300
+Account owner: John Smith, Balance: 1300
 
 === Rectangle Class Test ===
 Area: 50
@@ -172,18 +172,18 @@ Is square? true
 
 ---
 
-## טיפים
+## Tips
 
-- Class מוגדר עם המילה `class`
-- Constructor רץ בעת יצירת מופע חדש
-- `new ClassName()` יוצר מופע חדש
-- `this` בתוך המחלקה מתייחס למופע הנוכחי
-- פרמטר ברירת מחדל: `parameter = defaultValue`
+- Class is defined with the keyword `class`
+- Constructor runs when a new instance is created
+- `new ClassName()` creates a new instance
+- `this` inside the class refers to the current instance
+- Default parameter: `parameter = defaultValue`
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. הוסף למחלקת Book מאפיין `year` (שנת פרסום)
-2. צור מחלקה `Circle` עם מתודות לחישוב שטח והיקף
-3. הוסף ל-BankAccount מתודה `transfer()` להעברת כסף בין חשבונות
+1. Add a `year` property (publication year) to the Book class
+2. Create a `Circle` class with methods to calculate area and perimeter
+3. Add a `transfer()` method to BankAccount for transferring money between accounts
