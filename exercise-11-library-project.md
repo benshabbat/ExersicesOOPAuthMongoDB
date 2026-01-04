@@ -1,42 +1,42 @@
-# תרגיל 11: פרויקט מקיף - מערכת ניהול ספריה 📚
+# Exercise 11: Comprehensive Project - Library Management System 📚
 
-## 🎯 מטרות הפרויקט
+## 🎯 Project Objectives
 
-פרויקט מקיף שמשלב את **כל** מה שלמדנו:
-- ✅ **Classes & Inheritance** - מחלקות והורשה
-- ✅ **Encapsulation** - הסתרת מידע עם `#`
-- ✅ **Polymorphism** - התנהגויות שונות לפריטים שונים
-- ✅ **Static Properties** - מעקב אחר מזהים ייחודיים
-- ✅ **Complex Methods** - מתודות חיפוש, סינון, וסטטיסטיקות
+A comprehensive project that combines **everything** we've learned:
+- ✅ **Classes & Inheritance** - Classes and inheritance
+- ✅ **Encapsulation** - Information hiding with `#`
+- ✅ **Polymorphism** - Different behaviors for different items
+- ✅ **Static Properties** - Tracking unique identifiers
+- ✅ **Complex Methods** - Search, filter, and statistics methods
 
-### מערכת הספריה תכלול:
-- 📖 **ספרים**, 📰 **כתבי עת**, 📀 **DVDs**
-- 👤 **חברי ספריה** - עם הגבלת השאלות
-- 🔍 **חיפוש** - לפי כותרת, מחבר, ז'אנר
-- 📊 **סטטיסטיקות** - מעקב אחרי השאלות וזמינות
+### The library system will include:
+- 📖 **Books**, 📰 **Magazines**, 📀 **DVDs**
+- 👤 **Library members** - With borrowing limits
+- 🔍 **Search** - By title, author, genre
+- 📊 **Statistics** - Tracking borrows and availability
 
 ---
 
-## 📦 מבנה המערכת
+## 📦 System Structure
 
-### היררכיית המחלקות
+### Class Hierarchy
 
 ```
-LibraryItem (בסיס)
-├── Book (ספר)
-├── Magazine (כתב עת)
+LibraryItem (base)
+├── Book (book)
+├── Magazine (magazine)
 └── DVD
 
-Member (חבר ספריה)
+Member (library member)
 
-Library (הספריה)
+Library (the library)
 ```
 
 ---
 
-## 📖 חלק א': מחלקות הפריטים
+## 📖 Part A: Item Classes
 
-### LibraryItem - מחלקת בסיס
+### LibraryItem - Base Class
 
 ```javascript
 class LibraryItem {
@@ -84,7 +84,7 @@ class LibraryItem {
 }
 ```
 
-### Book - ספר
+### Book - Book
 
 ```javascript
 class Book extends LibraryItem {
@@ -102,7 +102,7 @@ class Book extends LibraryItem {
 }
 ```
 
-### Magazine - כתב עת
+### Magazine - Magazine
 
 ```javascript
 class Magazine extends LibraryItem {
@@ -141,12 +141,12 @@ class DVD extends LibraryItem {
 
 ---
 
-## 👤 חלק ב': מחלקת Member
+## 👤 Part B: Member Class
 
-### דרישות
-- מזהה חבר **פרטי** (#memberId)
-- הגבלה של **3 פריטים** מקסימום בו-זמנית
-- מעקב אחרי פריטים מושאלים
+### Requirements
+- **Private** member ID (#memberId)
+- Limit of **3 items** maximum simultaneously
+- Tracking borrowed items
 
 ```javascript
 class Member {
@@ -205,12 +205,12 @@ class Member {
 
 ---
 
-## 🏛️ חלק ג': מחלקת Library
+## 🏛️ Part C: Library Class
 
-### דרישות
-- ניהול פריטים וחברים
-- חיפוש לפי כותרת ומחבר
-- סטטיסטיקות
+### Requirements
+- Managing items and members
+- Search by title and author
+- Statistics
 
 ```javascript
 class Library {
@@ -347,10 +347,10 @@ class Library {
 
 ---
 
-## 🎬 חלק ד': תוכנית הדגמה
+## 🎬 Part D: Demonstration Program
 
 ```javascript
-console.log("🎓 ברוכים הבאים למערכת ניהול הספריה!\n");
+console.log("🎓 Welcome to the Library Management System!\n");
 
 // Create library
 const library = new Library("הספריה העירונית");
@@ -441,24 +441,24 @@ console.log("\n\n🎉 הדגמה הושלמה בהצלחה!");
 
 ---
 
-## 🚀 אתגרים נוספים (אופציונלי)
+## 🚀 Additional Challenges (Optional)
 
-1. **AudioBook** - הוסף מחלקה לספרי אודיו
-2. **Rating System** - אפשר לחברים לדרג פריטים
-3. **Late Fees** - קנסות על החזרה מאוחרת
-4. **Reservation** - אפשרות לשריין פריט מושאל
-5. **Librarian** - מחלקה לספרן עם הרשאות מיוחדות
-6. **History** - היסטוריה של השאלות לכל חבר
-7. **Export to JSON** - ייצוא נתונים
-8. **Notifications** - תזכורות להחזיר ספרים
-9. **Sorting** - מיון פריטים לפי קריטריונים
-10. **Interactive Dashboard** - תפריט אינטראקטיבי
+1. **AudioBook** - Add class for audiobooks
+2. **Rating System** - Allow members to rate items
+3. **Late Fees** - Penalties for late returns
+4. **Reservation** - Option to reserve borrowed items
+5. **Librarian** - Class for librarian with special permissions
+6. **History** - Borrowing history for each member
+7. **Export to JSON** - Export data
+8. **Notifications** - Reminders to return books
+9. **Sorting** - Sort items by criteria
+10. **Interactive Dashboard** - Interactive menu
 
 ---
 
-## 🎓 מה למדנו בפרויקט?
+## 🎓 What We Learned in This Project
 
-### שילוב כל עקרונות ה-OOP:
+### Combining All OOP Principles:
 
 **1. Encapsulation** 🔒
 ```javascript
@@ -476,7 +476,7 @@ DVD extends LibraryItem
 **3. Polymorphism** 🎭
 ```javascript
 items.forEach(item => console.log(item.getInfo()))
-// כל אחד מדפיס בצורה שונה!
+// Each one prints differently!
 ```
 
 **4. Static Properties** 📊
@@ -487,13 +487,13 @@ this.id = `ITEM-${LibraryItem.nextId++}`;
 
 ---
 
-## 💡 טיפים למימוש
+## 💡 Implementation Tips
 
-1. **תכנן קודם** - צייר דיאגרמת מחלקות
-2. **בנה שלב שלב** - התחל מהבסיס
-3. **בדוק כל שלב** - אל תצבור קוד ללא בדיקה
-4. **השתמש ב-instanceof** - לבדוק סוג מחלקה
-5. **נצל את ההורשה** - אל תשכפל קוד
+1. **Plan first** - Draw class diagram
+2. **Build step by step** - Start from basics
+3. **Test each step** - Don't accumulate code without testing
+4. **Use instanceof** - To check class type
+5. **Leverage inheritance** - Don't duplicate code
 
 ---
 

@@ -1,27 +1,27 @@
-# תרגיל 9: פולימורפיזם (Polymorphism) 🎭
+# Exercise 9: Polymorphism 🎭
 
-## 🎯 מטרות התרגיל
+## 🎯 Exercise Objectives
 
-בתרגיל זה נלמד:
-- ✅ **Polymorphism** - פולימורפיזם - אותה מתודה, התנהגויות שונות
-- ✅ **Method Overriding** - דריסת מתודות בצורה משמעותית
-- ✅ **Common Interface** - ממשק משותף למחלקות שונות
-- ✅ **Dynamic Behavior** - התנהגות דינמית בזמן ריצה
-- ✅ **Real-world Examples** - דוגמאות מעולם האמיתי
+In this exercise we will learn:
+- ✅ **Polymorphism** - Polymorphism - same method, different behaviors
+- ✅ **Method Overriding** - Meaningful method overriding
+- ✅ **Common Interface** - Common interface for different classes
+- ✅ **Dynamic Behavior** - Dynamic behavior at runtime
+- ✅ **Real-world Examples** - Real-world examples
 
 ---
 
-## 💳 חלק א': מערכת תשלומים - דוגמה קלאסית
+## 💳 Part A: Payment System - Classic Example
 
-### מטרה
-צור מערכת תשלומים שתומכת במספר אמצעי תשלום שונים. כל אמצעי מעבד תשלומים אחרת.
+### Goal
+Create a payment system that supports multiple payment methods. Each method processes payments differently.
 
-### דרישות
-- **Payment**: מחלקת בסיס עם `process()`
-- **CreditCardPayment**: תשלום בכרטיס אשראי
-- **PayPalPayment**: תשלום דרך PayPal
-- **CashPayment**: תשלום במזומן
-- **BitcoinPayment**: תשלום ב-Bitcoin
+### Requirements
+- **Payment**: Base class with `process()`
+- **CreditCardPayment**: Credit card payment
+- **PayPalPayment**: PayPal payment
+- **CashPayment**: Cash payment
+- **BitcoinPayment**: Bitcoin payment
 
 ### קוד להשלמה
 
@@ -35,12 +35,12 @@ class Payment {
     }
     
     process() {
-        console.log(`מעבד תשלום של ₪${this.amount} עבור ${this.description}`);
+        console.log(`Processing payment of ₪${this.amount} for ${this.description}`);
         this.status = "completed";
     }
     
     getDetails() {
-        return `תשלום: ₪${this.amount}, סטטוס: ${this.status}`;
+        return `Payment: ₪${this.amount}, Status: ${this.status}`;
     }
 }
 
@@ -59,15 +59,15 @@ class CreditCardPayment extends Payment {
     
     // Override process - specific implementation for credit card
     process() {
-        console.log(`💳 מעבד תשלום בכרטיס אשראי ${this.cardNumber}`);
-        console.log(`   סכום: ₪${this.amount}`);
-        console.log(`   אימות CVV...`);
-        console.log(`   ✅ התשלום אושר!`);
+        console.log(`💳 Processing credit card payment ${this.cardNumber}`);
+        console.log(`   Amount: ₪${this.amount}`);
+        console.log(`   Verifying CVV...`);
+        console.log(`   ✅ Payment approved!`);
         this.status = "completed";
     }
     
     getDetails() {
-        return `${super.getDetails()}, אמצעי תשלום: ${this.paymentMethod}, כרטיס: ${this.cardNumber}`;
+        return `${super.getDetails()}, Payment method: ${this.paymentMethod}, Card: ${this.cardNumber}`;
     }
 }
 
@@ -80,11 +80,11 @@ class PayPalPayment extends Payment {
     
     // Override process
     process() {
-        console.log(`🅿️ מעבד תשלום דרך PayPal`);
-        console.log(`   חשבון: ${this.email}`);
-        console.log(`   סכום: ₪${this.amount}`);
-        console.log(`   מתחבר ל-PayPal...`);
-        console.log(`   ✅ התשלום הושלם!`);
+        console.log(`🅿️ Processing payment through PayPal`);
+        console.log(`   Account: ${this.email}`);
+        console.log(`   Amount: ₪${this.amount}`);
+        console.log(`   Connecting to PayPal...`);
+        console.log(`   ✅ Payment completed!`);
         this.status = "completed";
     }
 }
@@ -99,9 +99,9 @@ class CashPayment extends Payment {
     process() {
         // Write your code here
         // Print appropriate message for cash payment 💵
-        console.log(`💵 מקבל תשלום במזומן`);
-        console.log(`   סכום: ₪${this.amount}`);
-        console.log(`   ✅ התשלום בוצע!`);
+        console.log(`💵 Receiving cash payment`);
+        console.log(`   Amount: ₪${this.amount}`);
+        console.log(`   ✅ Payment completed!`);
         this.status = "completed";
     }
 }
@@ -115,11 +115,11 @@ class BitcoinPayment extends Payment {
     }
     
     process() {
-        console.log(`₿ מעבד תשלום ב-Bitcoin`);
-        console.log(`   ארנק: ${this.walletAddress}`);
-        console.log(`   סכום: ₪${this.amount}`);
-        console.log(`   ממתין לאישור blockchain...`);
-        console.log(`   ✅ התשלום אומת!`);
+        console.log(`₿ Processing Bitcoin payment`);
+        console.log(`   Wallet: ${this.walletAddress}`);
+        console.log(`   Amount: ₪${this.amount}`);
+        console.log(`   Waiting for blockchain confirmation...`);
+        console.log(`   ✅ Payment verified!`);
         this.status = "completed";
     }
 }
@@ -134,10 +134,10 @@ function processPayment(payment) {
 // Tests - polymorphism in action
 console.log("=== Payment System - Polymorphism ===");
 const payments = [
-    new CreditCardPayment(500, "קניית נעליים", "1234567812345678", "123"),
-    new PayPalPayment(250, "מנוי Netflix", "user@example.com"),
-    new CashPayment(100, "קפה"),
-    new BitcoinPayment(1000, "מחשב נייד", "1A2B3C4D5E6F7G8H")
+    new CreditCardPayment(500, "Buy shoes", "1234567812345678", "123"),
+    new PayPalPayment(250, "Netflix subscription", "user@example.com"),
+    new CashPayment(100, "Coffee"),
+    new BitcoinPayment(1000, "Laptop", "1A2B3C4D5E6F7G8H")
 ];
 
 // Iterate over all payments and process them
@@ -147,12 +147,12 @@ payments.forEach(payment => processPayment(payment));
 
 ---
 
-## 📐 חלק ב': מערכת צורות גיאומטריות
+## 📐 Part B: Geometric Shapes System
 
-### מטרה
-צור מערכת צורות שבה כל צורה מחשבת שטח והיקף אחרת.
+### Goal
+Create a shapes system where each shape calculates area and perimeter differently.
 
-### קוד להשלמה
+### Code to Complete
 
 ```javascript
 class Shape {
@@ -170,7 +170,7 @@ class Shape {
     }
     
     describe() {
-        console.log(`צורה בצבע ${this.color}`);
+        console.log(`Shape in ${this.color} color`);
     }
 }
 
@@ -189,7 +189,7 @@ class Circle extends Shape {
     }
     
     describe() {
-        console.log(`⭕ עיגול ${this.color}, רדיוס: ${this.radius}`);
+        console.log(`⭕ ${this.color} circle, Radius: ${this.radius}`);
     }
 }
 
@@ -211,7 +211,7 @@ class Rectangle extends Shape {
     }
     
     describe() {
-        console.log(`▭ מלבן ${this.color}, ${this.width}x${this.height}`);
+        console.log(`▭ ${this.color} rectangle, ${this.width}x${this.height}`);
     }
 }
 
@@ -236,41 +236,41 @@ class Triangle extends Shape {
     }
     
     describe() {
-        console.log(`△ משולש ${this.color}, בסיס: ${this.base}`);
+        console.log(`△ ${this.color} triangle, Base: ${this.base}`);
     }
 }
 
 // Function that prints info about any shape - polymorphism!
 function printShapeInfo(shape) {
     shape.describe();
-    console.log(`  שטח: ${shape.getArea().toFixed(2)}`);
-    console.log(`  היקף: ${shape.getPerimeter().toFixed(2)}`);
+    console.log(`  Area: ${shape.getArea().toFixed(2)}`);
+    console.log(`  Perimeter: ${shape.getPerimeter().toFixed(2)}`);
     console.log();
 }
 
 // Tests
 console.log("\n\n=== Geometric Shapes - Polymorphism ===");
 const shapes = [
-    new Circle("אדום", 5),
-    new Rectangle("כחול", 10, 6),
-    new Triangle("ירוק", 8, 6, 6, 7, 9)
+    new Circle("red", 5),
+    new Rectangle("blue", 10, 6),
+    new Triangle("green", 8, 6, 6, 7, 9)
 ];
 
 shapes.forEach(shape => printShapeInfo(shape));
 
 // Calculate total area of all shapes
 const totalArea = shapes.reduce((sum, shape) => sum + shape.getArea(), 0);
-console.log(`סה"כ שטח של כל הצורות: ${totalArea.toFixed(2)}`);
+console.log(`Total area of all shapes: ${totalArea.toFixed(2)}`);
 ```
 
 ---
 
-## 📢 חלק ג': מערכת התראות
+## 📢 Part C: Notification System
 
-### מטרה
-צור מערכת התראות שיכולה לשלוח הודעות בדרכים שונות.
+### Goal
+Create a notification system that can send messages in different ways.
 
-### קוד להשלמה
+### Code to Complete
 
 ```javascript
 class Notification {
@@ -282,7 +282,7 @@ class Notification {
     }
     
     send() {
-        console.log(`שולח התראה ל-${this.recipient}: ${this.message}`);
+        console.log(`Sending notification to ${this.recipient}: ${this.message}`);
         this.sent = true;
     }
 }
@@ -294,11 +294,11 @@ class EmailNotification extends Notification {
     }
     
     send() {
-        console.log(`📧 שולח אימייל`);
-        console.log(`   אל: ${this.recipient}`);
-        console.log(`   נושא: ${this.subject}`);
-        console.log(`   הודעה: ${this.message}`);
-        console.log(`   ✅ האימייל נשלח!`);
+        console.log(`📧 Sending email`);
+        console.log(`   To: ${this.recipient}`);
+        console.log(`   Subject: ${this.subject}`);
+        console.log(`   Message: ${this.message}`);
+        console.log(`   ✅ Email sent!`);
         this.sent = true;
     }
 }
@@ -312,10 +312,10 @@ class SMSNotification extends Notification {
     send() {
         // Write your code here
         // Send SMS 📱
-        console.log(`📱 שולח SMS`);
-        console.log(`   אל: ${this.phoneNumber}`);
-        console.log(`   הודעה: ${this.message}`);
-        console.log(`   ✅ ה-SMS נשלח!`);
+        console.log(`📱 Sending SMS`);
+        console.log(`   To: ${this.phoneNumber}`);
+        console.log(`   Message: ${this.message}`);
+        console.log(`   ✅ SMS sent!`);
         this.sent = true;
     }
 }
@@ -327,10 +327,10 @@ class PushNotification extends Notification {
     }
     
     send() {
-        console.log(`📲 שולח push notification`);
-        console.log(`   מכשיר: ${this.deviceId}`);
-        console.log(`   הודעה: ${this.message}`);
-        console.log(`   ✅ ההתראה נשלחה!`);
+        console.log(`📲 Sending push notification`);
+        console.log(`   Device: ${this.deviceId}`);
+        console.log(`   Message: ${this.message}`);
+        console.log(`   ✅ Notification sent!`);
         this.sent = true;
     }
 }
@@ -345,18 +345,18 @@ function sendNotification(notification) {
 console.log("\n\n=== Notification System - Polymorphism ===");
 const notifications = [
     new EmailNotification(
-        "פרויקט חדש נוצר",
+        "New project created",
         "user@example.com",
-        "עדכון חשוב"
+        "Important update"
     ),
     new SMSNotification(
-        "קוד האימות שלך: 123456",
-        "יוסי",
+        "Your verification code: 123456",
+        "Yossi",
         "050-1234567"
     ),
     new PushNotification(
-        "יש לך הודעה חדשה",
-        "משתמש123",
+        "You have a new message",
+        "user123",
         "device-abc-123"
     )
 ];

@@ -1,46 +1,46 @@
-# תרגיל 6: עבודה מתקדמת עם Classes וקונסטרקטורים 🎯
+# Exercise 6: Advanced Work with Classes and Constructors 🎯
 
-## 🎯 מטרות התרגיל
+## 🎯 Exercise Objectives
 
-בתרגיל זה נלמד:
-- ✅ **Validation** - בדיקת תקינות נתונים בקונסטרקטור
-- ✅ **Error Handling** - טיפול בשגיאות עם `throw` ו-`try-catch`
-- ✅ **Default Parameters** - פרמטרים ברירת מחדל
-- ✅ **Static Properties** - מאפיינים סטטיים למעקב אחר מופעים
-- ✅ **Complex Methods** - מתודות מורכבות יותר
+In this exercise we will learn:
+- ✅ **Validation** - Data validation in constructor
+- ✅ **Error Handling** - Error handling with `throw` and `try-catch`
+- ✅ **Default Parameters** - Default parameter values
+- ✅ **Static Properties** - Static properties for tracking instances
+- ✅ **Complex Methods** - More complex methods
 
 ---
 
-## 📚 חלק א': מחלקת User עם Validation
+## 📚 Part A: User Class with Validation
 
-### מטרה
-צור מחלקה `User` שמוודאת שהנתונים תקינים לפני יצירת המשתמש.
+### Goal
+Create a `User` class that ensures data is valid before creating the user.
 
-### דרישות
-1. שם משתמש חייב להיות לפחות 3 תווים
-2. אימייל חייב להכיל `@`
-3. גיל חייב להיות בין 13 ל-120
-4. אם הנתונים לא תקינים, זרוק שגיאה עם הודעה ברורה
+### Requirements
+1. Username must be at least 3 characters
+2. Email must contain `@`
+3. Age must be between 13 and 120
+4. If data is invalid, throw an error with a clear message
 
-### קוד להשלמה
+### Code to Complete
 
 ```javascript
 class User {
     constructor(username, email, age) {
         // Validation for username (must be at least 3 characters)
         if (username.length < 3) {
-            throw new Error("שם משתמש חייב להכיל לפחות 3 תווים");
+            throw new Error("Username must contain at least 3 characters");
         }
         
         // Validation for email (must contain @)
         if (!email.includes("@")) {
-            throw new Error("אימייל לא תקין");
+            throw new Error("Invalid email");
         }
         
         // Validation for age (must be between 13 and 120)
         // Write your code here
         if (age < 13 || age > 120) {
-            throw new Error("גיל חייב להיות בין 13 ל-120");
+            throw new Error("Age must be between 13 and 120");
         }
         
         this.username = username;
@@ -68,60 +68,60 @@ class User {
     }
     
     getUserInfo() {
-        return `${this.username} (${this.email}) - ${this.isActive ? "פעיל" : "לא פעיל"}`;
+        return `${this.username} (${this.email}) - ${this.isActive ? "Active" : "Inactive"}`;
     }
 }
 
 // Tests
 console.log("=== Testing User Class ===");
 try {
-    const user1 = new User("יוסי", "yossi@example.com", 25);
+    const user1 = new User("John", "john@example.com", 25);
     console.log(user1.getUserInfo());
-    console.log(`החשבון קיים ${user1.getAccountAge()} ימים`);
+    console.log(`Account exists for ${user1.getAccountAge()} days`);
     
     // Try creating user with short name
     const user2 = new User("ab", "test@example.com", 20);
 } catch (error) {
-    console.log("שגיאה:", error.message);
+    console.log("Error:", error.message);
 }
 
 try {
     // Try creating user with invalid email
-    const user3 = new User("דני", "invalidemail", 30);
+    const user3 = new User("Danny", "invalidemail", 30);
 } catch (error) {
-    console.log("שגיאה:", error.message);
+    console.log("Error:", error.message);
 }
 
 try {
     // Try creating user with invalid age
-    const user4 = new User("משה", "moshe@example.com", 10);
+    const user4 = new User("Mike", "mike@example.com", 10);
 } catch (error) {
-    console.log("שגיאה:", error.message);
+    console.log("Error:", error.message);
 }
 ```
 
 ---
 
-## 📝 חלק ב': מערכת Todo מלאה
+## 📝 Part B: Complete Todo System
 
-### מטרה
-צור מערכת ניהול משימות מתקדמת עם שתי מחלקות: `TodoItem` ו-`TodoList`.
+### Goal
+Create an advanced task management system with two classes: `TodoItem` and `TodoList`.
 
-### דרישות
+### Requirements
 
 **TodoItem:**
-- מזהה ייחודי אוטומטי
-- כותרת, תיאור (אופציונלי), עדיפות (ברירת מחדל: "medium")
-- סטטוס: completed/pending
-- תאריך יצירה והשלמה
+- Automatic unique identifier
+- Title, description (optional), priority (default: "medium")
+- Status: completed/pending
+- Creation and completion dates
 
 **TodoList:**
-- שם הרשימה
-- הוספה/הסרה/השלמת משימות
-- סינון לפי סטטוס ועדיפות
-- סטטיסטיקות
+- List name
+- Add/remove/complete tasks
+- Filter by status and priority
+- Statistics
 
-### קוד להשלמה
+### Code to Complete
 
 ```javascript
 class TodoItem {
@@ -170,7 +170,7 @@ class TodoList {
         const item = new TodoItem(title, description, priority);
         // Write your code here
         this.items.push(item);
-        console.log(`משימה חדשה נוספה: ${item.title}`);
+        console.log(`New task added: ${item.title}`);
         return item;
     }
     
@@ -178,7 +178,7 @@ class TodoList {
         const index = this.items.findIndex(item => item.id === id);
         if (index !== -1) {
             const removed = this.items.splice(index, 1)[0];
-            console.log(`משימה נמחקה: ${removed.title}`);
+            console.log(`Task deleted: ${removed.title}`);
             return true;
         }
         return false;
@@ -189,7 +189,7 @@ class TodoList {
         if (item) {
             // Write your code here
             item.complete();
-            console.log(`משימה הושלמה: ${item.title}`);
+            console.log(`Task completed: ${item.title}`);
             return true;
         }
         return false;
@@ -214,7 +214,7 @@ class TodoList {
     listItems() {
         console.log(`\n=== ${this.listName} ===`);
         if (this.items.length === 0) {
-            console.log("אין משימות");
+            console.log("No tasks");
             return;
         }
         this.items.forEach(item => {
@@ -243,13 +243,13 @@ class TodoList {
 
 // Comprehensive Tests
 console.log("\n\n=== Testing Todo System ===");
-const myTodoList = new TodoList("המשימות שלי");
+const myTodoList = new TodoList("My Tasks");
 
 // Add tasks
-myTodoList.addItem("לקנות חלב", "בדרך הביתה", "high");
-myTodoList.addItem("לסיים פרויקט", "עד יום חמישי", "high");
-myTodoList.addItem("להתקשר לאמא", "", "medium");
-myTodoList.addItem("לקרוא ספר", "30 עמודים ביום", "low");
+myTodoList.addItem("Buy milk", "On the way home", "high");
+myTodoList.addItem("Finish project", "By Thursday", "high");
+myTodoList.addItem("Call mom", "", "medium");
+myTodoList.addItem("Read book", "30 pages per day", "low");
 
 // Display all tasks
 myTodoList.listItems();
@@ -275,11 +275,11 @@ highPriority.forEach(item => console.log(item.getInfo()));
 // Show statistics
 console.log("\n--- Statistics ---");
 const stats = myTodoList.getStats();
-console.log(`סה"כ משימות: ${stats.total}`);
-console.log(`הושלמו: ${stats.completed}`);
-console.log(`ממתינות: ${stats.pending}`);
-console.log(`עדיפות גבוהה: ${stats.high}`);
-console.log(`אחוז השלמה: ${stats.completionRate}%`);
+console.log(`Total tasks: ${stats.total}`);
+console.log(`Completed: ${stats.completed}`);
+console.log(`Pending: ${stats.pending}`);
+console.log(`High priority: ${stats.high}`);
+console.log(`Completion rate: ${stats.completionRate}%`);
 
 // Delete a task
 console.log("\n--- Deleting Task ---");
@@ -289,29 +289,29 @@ myTodoList.listItems();
 
 ---
 
-## 🎓 מה למדנו?
+## 🎓 What We Learned
 
-### Validation בקונסטרקטור
+### Validation in Constructor
 ```javascript
 if (condition) {
-    throw new Error("הודעת שגיאה");
+    throw new Error("Error message");
 }
 ```
 
 ### Try-Catch
 ```javascript
 try {
-    // קוד שעלול לזרוק שגיאה
+    // Code that may throw an error
 } catch (error) {
-    // טיפול בשגיאה
+    // Handle error
     console.log(error.message);
 }
 ```
 
 ### Default Parameters
 ```javascript
-constructor(name, description = "ללא תיאור", priority = "medium") {
-    // אם לא מעבירים ערך, נשתמש בערך ברירת המחדל
+constructor(name, description = "No description", priority = "medium") {
+    // If no value is passed, we use the default value
 }
 ```
 
@@ -325,67 +325,67 @@ constructor() {
 
 ---
 
-## 💡 טיפים
+## 💡 Tips
 
-1. **Validation** - תמיד בדוק נתונים לפני שמשתמשים בהם
-2. **Error Messages** - כתוב הודעות שגיאה ברורות
-3. **Default Values** - השתמש בפרמטרים ברירת מחדל לגמישות
-4. **Static Properties** - שימושיים למעקב אחר כל המופעים
-
----
-
-## 🚀 אתגרים נוספים
-
-1. **הוסף תאריך יעד** למשימות
-2. **צור התראות** למשימות שחלף תאריך היעד שלהן
-3. **הוסף קטגוריות** למשימות
-4. **צור מתודת search** שמחפשת משימות לפי טקסט
-5. **הוסף מתודה לסידור** המשימות לפי תאריך/עדיפות
+1. **Validation** - Always check data before using it
+2. **Error Messages** - Write clear error messages
+3. **Default Values** - Use default parameters for flexibility
+4. **Static Properties** - Useful for tracking all instances
 
 ---
 
-## 📤 פלט צפוי
+## 🚀 Additional Challenges
+
+1. **Add due date** to tasks
+2. **Create alerts** for tasks past their due date
+3. **Add categories** to tasks
+4. **Create search method** that searches tasks by text
+5. **Add sorting method** for tasks by date/priority
+
+---
+
+## 📤 Expected Output
 
 ```
 === Testing User Class ===
-יוסי (yossi@example.com) - פעיל
-החשבון קיים 0 ימים
-שגיאה: שם משתמש חייב להכיל לפחות 3 תווים
-שגיאה: אימייל לא תקין
-שגיאה: גיל חייב להיות בין 13 ל-120
+John (john@example.com) - Active
+Account exists for 0 days
+Error: Username must contain at least 3 characters
+Error: Invalid email
+Error: Age must be between 13 and 120
 
 === Testing Todo System ===
-משימה חדשה נוספה: לקנות חלב
-משימה חדשה נוספה: לסיים פרויקט
-משימה חדשה נוספה: להתקשר לאמא
-משימה חדשה נוספה: לקרוא ספר
+New task added: Buy milk
+New task added: Finish project
+New task added: Call mom
+New task added: Read book
 
-=== המשימות שלי ===
-○ 🔴 [1] לקנות חלב
-   בדרך הביתה
-○ 🔴 [2] לסיים פרויקט
-   עד יום חמישי
-○ 🟡 [3] להתקשר לאמא
-○ 🟢 [4] לקרוא ספר
-   30 עמודים ביום
+=== My Tasks ===
+○ 🔴 [1] Buy milk
+   On the way home
+○ 🔴 [2] Finish project
+   By Thursday
+○ 🟡 [3] Call mom
+○ 🟢 [4] Read book
+   30 pages per day
 
 --- Completing Tasks ---
-משימה הושלמה: לקנות חלב
-משימה הושלמה: להתקשר לאמא
+Task completed: Buy milk
+Task completed: Call mom
 
-=== המשימות שלי ===
-✓ 🔴 [1] לקנות חלב
-   בדרך הביתה
-○ 🔴 [2] לסיים פרויקט
-   עד יום חמישי
-✓ 🟡 [3] להתקשר לאמא
-○ 🟢 [4] לקרוא ספר
-   30 עמודים ביום
+=== My Tasks ===
+✓ 🔴 [1] Buy milk
+   On the way home
+○ 🔴 [2] Finish project
+   By Thursday
+✓ 🟡 [3] Call mom
+○ 🟢 [4] Read book
+   30 pages per day
 
 --- Statistics ---
-סה"כ משימות: 4
-הושלמו: 2
-ממתינות: 2
-עדיפות גבוהה: 2
-אחוז השלמה: 50%
+Total tasks: 4
+Completed: 2
+Pending: 2
+High priority: 2
+Completion rate: 50%
 ```

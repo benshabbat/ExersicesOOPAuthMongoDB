@@ -32,12 +32,12 @@ Store (חנות)
 
 ---
 
-## 🏷️ חלק א': מחלקת Product
+## 🏷️ Part A: Product Class
 
-### דרישות
-- מחיר ומלאי **פרטיים** (private)
-- Getters/Setters עם validation
-- מערכת ביקורות ודירוגים
+### Requirements
+- Price and stock **private** (private)
+- Getters/Setters with validation
+- Reviews and ratings system
 
 ```javascript
 class Product {
@@ -105,13 +105,13 @@ class Product {
 
 ---
 
-## 🛒 חלק ב': מחלקת ShoppingCart
+## 🛒 Part B: ShoppingCart Class
 
-### דרישות
-- הוספת מוצרים (עם כמות)
-- הסרה ועדכון כמות
-- חישוב סה"כ
-- ניקוי עגלה
+### Requirements
+- Add products (with quantity)
+- Remove and update quantity
+- Calculate total
+- Clear cart
 
 ```javascript
 class ShoppingCart {
@@ -179,13 +179,13 @@ class ShoppingCart {
 
 ---
 
-## 📋 חלק ג': מחלקת Order
+## 📋 Part C: Order Class
 
-### דרישות
-- מספר הזמנה אוטומטי
-- מעקב סטטוס (pending, processing, shipped, delivered, cancelled)
-- חישוב סכום כולל
-- תאריך הזמנה
+### Requirements
+- Automatic order number
+- Status tracking (pending, processing, shipped, delivered, cancelled)
+- Calculate total amount
+- Order date
 
 ```javascript
 class Order {
@@ -240,13 +240,13 @@ class Order {
 
 ---
 
-## 👤 חלק ד': מחלקת Customer
+## 👤 Part D: Customer Class
 
-### דרישות
-- סיסמה **פרטית** (#password) עם hashing
-- עגלת קניות אישית
-- היסטוריית הזמנות
-- כתובות משלוח
+### Requirements
+- **Private** password (#password) with hashing
+- Personal shopping cart
+- Order history
+- Shipping addresses
 
 ```javascript
 class Customer {
@@ -326,12 +326,12 @@ class Customer {
 
 ---
 
-## 🏪 חלק ה': מחלקת Store
+## 🏪 Part E: Store Class
 
-### דרישות
-- ניהול מוצרים ולקוחות
-- חיפוש וסינון
-- סטטיסטיקות עסקיות
+### Requirements
+- Managing products and customers
+- Search and filtering
+- Business statistics
 
 ```javascript
 class Store {
@@ -437,10 +437,10 @@ class Store {
 
 ---
 
-## 🎬 חלק ו': תוכנית הדגמה
+## 🎬 Part F: Demonstration Program
 
 ```javascript
-console.log("🛍️ ברוכים הבאים לחנות האונליין!\n");
+console.log("🛒 Welcome to the Online Store!\n");
 
 // Create store
 const store = new Store("טכנו-שופ");
@@ -535,22 +535,22 @@ console.log("   • המלצות מוצרים\n");
 
 ---
 
-## 🚀 אתגרים נוספים (אופציונלי)
+## 🚀 Additional Challenges (Optional)
 
-1. **Coupon System** - קופונים והנחות
-2. **Shipping Tracking** - מעקב משלוחים
-3. **Wishlist** - רשימת משאלות
-4. **Product Comparison** - השוואת מוצרים
-5. **View History** - היסטוריית צפייה
-6. **Recommendations** - המלצות מוצרים
-7. **Payment Methods** - אמצעי תשלום שונים
-8. **Gift Cards** - כרטיסי מתנה
-9. **Inventory Alerts** - התראות מלאי נמוך
-10. **Analytics Dashboard** - דשבורד ניתוח
+1. **Coupon System** - Coupons and discounts
+2. **Shipping Tracking** - Shipment tracking
+3. **Wishlist** - Wishlist
+4. **Product Comparison** - Product comparison
+5. **View History** - Viewing history
+6. **Recommendations** - Product recommendations
+7. **Payment Methods** - Different payment methods
+8. **Gift Cards** - Gift cards
+9. **Inventory Alerts** - Low stock alerts
+10. **Analytics Dashboard** - Analytics dashboard
 
 ---
 
-## 🎓 מה למדנו בפרויקט?
+## 🎓 What We Learned in This Project
 
 ### Private Fields
 ```javascript
@@ -559,18 +559,18 @@ console.log("   • המלצות מוצרים\n");
 #password;
 ```
 
-### Getters & Setters עם Validation
+### Getters & Setters with Validation
 ```javascript
 set price(newPrice) {
     if (newPrice < 0) {
-        console.log("❌ מחיר לא יכול להיות שלילי");
+        console.log("❌ Price cannot be negative");
         return;
     }
     this.#price = newPrice;
 }
 ```
 
-### קשרים מורכבים
+### Complex Relationships
 ```
 Customer ──> ShoppingCart ──> Products
     │

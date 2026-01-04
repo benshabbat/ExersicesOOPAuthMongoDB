@@ -50,11 +50,11 @@ class Employee {
     }
     
     getInfo() {
-        return `עובד: ${this.getFullName()}, מזהה: ${this.employeeId}`;
+        return `Employee: ${this.getFullName()}, ID: ${this.employeeId}`;
     }
     
     work() {
-        console.log(`${this.getFullName()} עובד`);
+        console.log(`${this.getFullName()} is working`);
     }
 }
 
@@ -69,7 +69,7 @@ class FullTimeEmployee extends Employee {
     }
     
     getInfo() {
-        return `${super.getInfo()}, משרה מלאה, משכורת חודשית: ₪${this.monthlySalary}`;
+        return `${super.getInfo()}, Full-time, Monthly salary: ₪${this.monthlySalary}`;
     }
 }
 
@@ -82,14 +82,14 @@ class Manager extends FullTimeEmployee {
     
     addTeamMember(employee) {
         this.teamMembers.push(employee);
-        console.log(`${employee.getFullName()} נוסף לצוות של ${this.getFullName()}`);
+        console.log(`${employee.getFullName()} added to ${this.getFullName()}'s team`);
     }
     
     removeTeamMember(employeeId) {
         const index = this.teamMembers.findIndex(emp => emp.employeeId === employeeId);
         if (index !== -1) {
             const removed = this.teamMembers.splice(index, 1)[0];
-            console.log(`${removed.getFullName()} הוסר מהצוות`);
+            console.log(`${removed.getFullName()} removed from team`);
             return true;
         }
         return false;
@@ -100,11 +100,11 @@ class Manager extends FullTimeEmployee {
     }
     
     work() {
-        console.log(`${this.getFullName()} מנהל את מחלקת ${this.department} עם ${this.getTeamSize()} עובדים`);
+        console.log(`${this.getFullName()} manages the ${this.department} department with ${this.getTeamSize()} employees`);
     }
     
     getInfo() {
-        return `מנהל: ${this.getFullName()}, מחלקה: ${this.department}, חברי צוות: ${this.getTeamSize()}`;
+        return `Manager: ${this.getFullName()}, Department: ${this.department}, Team members: ${this.getTeamSize()}`;
     }
 }
 
@@ -127,16 +127,16 @@ class PartTimeEmployee extends Employee {
     }
     
     getInfo() {
-        return `${super.getInfo()}, משרה חלקית, ${this.hoursPerWeek} שעות/שבוע, ₪${this.hourlyRate}/שעה`;
+        return `${super.getInfo()}, Part-time, ${this.hoursPerWeek} hours/week, ₪${this.hourlyRate}/hour`;
     }
 }
 
 // Tests
 console.log("=== Testing Employee System ===");
-const emp1 = new FullTimeEmployee("יוסי", "כהן", "E001", 15000);
-const emp2 = new FullTimeEmployee("דני", "לוי", "E002", 12000);
-const emp3 = new PartTimeEmployee("מיכל", "אברהם", "E003", 60, 20);
-const manager1 = new Manager("רחל", "ברק", "M001", 25000, "פיתוח");
+const emp1 = new FullTimeEmployee("Yossi", "Cohen", "E001", 15000);
+const emp2 = new FullTimeEmployee("Danny", "Levi", "E002", 12000);
+const emp3 = new PartTimeEmployee("Michal", "Abraham", "E003", 60, 20);
+const manager1 = new Manager("Rachel", "Barak", "M001", 25000, "Development");
 
 console.log(emp1.getInfo());
 console.log(emp2.getInfo());
@@ -152,22 +152,22 @@ console.log("\n");
 manager1.work();
 emp1.work();
 
-console.log(`\nסה"כ עובדים במערכת: ${Employee.totalEmployees}`);
+console.log(`\nTotal employees in system: ${Employee.totalEmployees}`);
 ```
 
 ---
 
-## 🎮 חלק ב': מערכת דמויות במשחק RPG
+## 🎮 Part B: RPG Game Character System
 
-### מטרה
-צור מערכת דמויות למשחק תפקידים עם הורשה מורכבת.
+### Goal
+Create a character system for a role-playing game with complex inheritance.
 
-### היררכיה
+### Hierarchy
 ```
-Character (בסיס)
-├── Warrior (לוחם)
-├── Mage (קוסם)
-│   └── Healer (מרפא - יורש מ-Mage)
+Character (base)
+├── Warrior (warrior)
+├── Mage (mage)
+│   └── Healer (healer - inherits from Mage)
 ```
 
 ### קוד להשלמה
@@ -184,35 +184,35 @@ class Character {
     
     takeDamage(damage) {
         if (!this.isAlive) {
-            console.log(`${this.name} כבר מת`);
+            console.log(`${this.name} is already dead`);
             return;
         }
         
         this.health -= damage;
-        console.log(`${this.name} קיבל ${damage} נזק. בריאות: ${this.health}/${this.maxHealth}`);
+        console.log(`${this.name} took ${damage} damage. Health: ${this.health}/${this.maxHealth}`);
         
         if (this.health <= 0) {
             this.health = 0;
             this.isAlive = false;
-            console.log(`💀 ${this.name} מת!`);
+            console.log(`💀 ${this.name} died!`);
         }
     }
     
     heal(amount) {
         if (!this.isAlive) {
-            console.log(`${this.name} מת, לא ניתן לרפא`);
+            console.log(`${this.name} is dead, cannot heal`);
             return;
         }
         
         this.health = Math.min(this.health + amount, this.maxHealth);
-        console.log(`${this.name} רופא ב-${amount}. בריאות: ${this.health}/${this.maxHealth}`);
+        console.log(`${this.name} healed by ${amount}. Health: ${this.health}/${this.maxHealth}`);
     }
     
     levelUp() {
         this.level++;
         this.maxHealth += 20;
         this.health = this.maxHealth;
-        console.log(`🎉 ${this.name} עלה לרמה ${this.level}!`);
+        console.log(`🎉 ${this.name} leveled up to ${this.level}!`);
     }
 }
 
@@ -225,17 +225,17 @@ class Warrior extends Character {
     
     attack(target) {
         if (!this.isAlive) {
-            console.log(`${this.name} מת ולא יכול לתקוף`);
+            console.log(`${this.name} is dead and cannot attack`);
             return;
         }
         
         const damage = this.strength * this.level;
-        console.log(`⚔️ ${this.name} תוקף את ${target.name}!`);
+        console.log(`⚔️ ${this.name} attacks ${target.name}!`);
         target.takeDamage(damage);
     }
     
     defend() {
-        console.log(`🛡️ ${this.name} מתגונן עם שריון של ${this.armor}`);
+        console.log(`🛡️ ${this.name} defends with ${this.armor} armor`);
     }
     
     takeDamage(damage) {
@@ -248,7 +248,7 @@ class Warrior extends Character {
         super.levelUp();
         this.strength += 3;
         this.armor += 2;
-        console.log(`כוח: ${this.strength}, שריון: ${this.armor}`);
+        console.log(`Strength: ${this.strength}, Armor: ${this.armor}`);
     }
 }
 
@@ -262,24 +262,24 @@ class Mage extends Character {
     
     castSpell(target, manaCost = 10) {
         if (!this.isAlive) {
-            console.log(`${this.name} מת ולא יכול להטיל כישופים`);
+            console.log(`${this.name} is dead and cannot cast spells`);
             return;
         }
         
         if (this.mana < manaCost) {
-            console.log(`❌ ${this.name} אין מספיק מנה (${this.mana}/${manaCost})`);
+            console.log(`❌ ${this.name} not enough mana (${this.mana}/${manaCost})`);
             return;
         }
         
         this.mana -= manaCost;
         const damage = this.spellPower * this.level;
-        console.log(`✨ ${this.name} מטיל כישוף על ${target.name}! (מנה: ${this.mana}/${this.maxMana})`);
+        console.log(`✨ ${this.name} casts a spell on ${target.name}! (Mana: ${this.mana}/${this.maxMana})`);
         target.takeDamage(damage);
     }
     
     meditate() {
         this.mana = Math.min(this.mana + 20, this.maxMana);
-        console.log(`🧘 ${this.name} מתרכז. מנה: ${this.mana}/${this.maxMana}`);
+        console.log(`🧘 ${this.name} meditates. Mana: ${this.mana}/${this.maxMana}`);
     }
     
     levelUp() {
@@ -287,7 +287,7 @@ class Mage extends Character {
         this.maxMana += 10;
         this.mana = this.maxMana;
         this.spellPower += 5;
-        console.log(`כוח כישוף: ${this.spellPower}, מנה מקסימלית: ${this.maxMana}`);
+        console.log(`Spell power: ${this.spellPower}, Max mana: ${this.maxMana}`);
     }
 }
 
@@ -299,33 +299,33 @@ class Healer extends Mage {
     
     healAlly(target) {
         if (!this.isAlive) {
-            console.log(`${this.name} מת ולא יכול לרפא`);
+            console.log(`${this.name} is dead and cannot heal`);
             return;
         }
         
         if (this.mana < 15) {
-            console.log(`❌ ${this.name} אין מספיק מנה לריפוי`);
+            console.log(`❌ ${this.name} not enough mana for healing`);
             return;
         }
         
         this.mana -= 15;
         const healAmount = this.healingPower * this.level;
-        console.log(`💚 ${this.name} מרפא את ${target.name}`);
+        console.log(`💚 ${this.name} heals ${target.name}`);
         target.heal(healAmount);
     }
     
     levelUp() {
         super.levelUp();
         this.healingPower += 5;
-        console.log(`כוח ריפוי: ${this.healingPower}`);
+        console.log(`Healing power: ${this.healingPower}`);
     }
 }
 
 // Comprehensive Tests
 console.log("\n\n=== Testing Game Character System ===");
-const warrior1 = new Warrior("ארתור", 2);
-const mage1 = new Mage("מרלין", 2);
-const healer1 = new Healer("אלינה", 2);
+const warrior1 = new Warrior("Arthur", 2);
+const mage1 = new Mage("Merlin", 2);
+const healer1 = new Healer("Elena", 2);
 
 console.log("\n--- Battle ---");
 warrior1.attack(mage1);
@@ -351,74 +351,74 @@ mage1.castSpell(warrior1);
 
 ---
 
-## 🎓 מה למדנו?
+## 🎓 What We Learned
 
-### הורשה רב-שכבתית
+### Multi-level Inheritance
 ```
 Manager extends FullTimeEmployee extends Employee
     ↓           ↓                    ↓
-  מנהל    עובד במשרה מלאה          עובד
+ Manager    Full-time employee       Employee
 ```
 
-### שרשרת super
+### Super Chain
 ```javascript
 class Manager extends FullTimeEmployee {
     getInfo() {
-        // קורא ל-FullTimeEmployee.getInfo()
-        // שקורא ל-Employee.getInfo()
-        return `מנהל: ${super.getInfo()}`;
+        // Calls FullTimeEmployee.getInfo()
+        // which calls Employee.getInfo()
+        return `Manager: ${super.getInfo()}`;
     }
 }
 ```
 
-### דריסה במספר רמות
+### Override in Multiple Levels
 ```javascript
 // Employee
-work() { console.log("עובד"); }
+work() { console.log("Working"); }
 
-// FullTimeEmployee - לא דורס
+// FullTimeEmployee - doesn't override
 
-// Manager - דורס
-work() { console.log("מנהל"); }
+// Manager - overrides
+work() { console.log("Managing"); }
 ```
 
 ---
 
-## 💡 טיפים
+## 💡 Tips
 
-1. **תכנן היררכיה** - חשוב מראש על מבנה המחלקות
-2. **super.method()** - קרא תמיד למחלקת אב כשצריך
-3. **DRY** - אל תשכפל קוד, השתמש בהורשה
-4. **הגיון עסקי** - שים קוד במחלקה הנכונה
-
----
-
-## 🚀 אתגרים נוספים
-
-1. **צור Director** - שיורש מ-Manager ומנהל מספר מנהלים
-2. **הוסף Intern** - עובד זמני עם תקופת התמחות
-3. **צור Assassin** - דמות חדשה עם יכולות מיוחדות
-4. **הוסף Equipment** - ציוד שמשפיע על סטטוסים
-5. **צור Party System** - קבוצת דמויות שפועלות ביחד
+1. **Plan hierarchy** - Think ahead about class structure
+2. **super.method()** - Always call parent class when needed
+3. **DRY** - Don't duplicate code, use inheritance
+4. **Business logic** - Put code in the right class
 
 ---
 
-## 📤 פלט צפוי
+## 🚀 Additional Challenges
+
+1. **Create Director** - Who inherits from Manager and manages multiple managers
+2. **Add Intern** - Temporary employee with internship period
+3. **Create Assassin** - New character with special abilities
+4. **Add Equipment** - Equipment that affects stats
+5. **Create Party System** - Group of characters acting together
+
+---
+
+## 📤 Expected Output
 
 ```
 === Testing Employee System ===
-עובד: יוסי כהן, מזהה: E001, משרה מלאה, משכורת חודשית: ₪15000
-עובד: דני לוי, מזהה: E002, משרה מלאה, משכורת חודשית: ₪12000
-עובד: מיכל אברהם, מזהה: E003, משרה חלקית, 20 שעות/שבוע, ₪60/שעה
-מנהל: רחל ברק, מחלקה: פיתוח, חברי צוות: 0
+Employee: Yossi Cohen, ID: E001, Full-time, Monthly salary: ₪15000
+Employee: Danny Levi, ID: E002, Full-time, Monthly salary: ₪12000
+Employee: Michal Abraham, ID: E003, Part-time, 20 hours/week, ₪60/hour
+Manager: Rachel Barak, Department: Development, Team members: 0
 
 --- Adding Team Members ---
-יוסי כהן נוסף לצוות של רחל ברק
-דני לוי נוסף לצוות של רחל ברק
-מיכל אברהם נוסף לצוות של רחל ברק
+Yossi Cohen added to Rachel Barak's team
+Danny Levi added to Rachel Barak's team
+Michal Abraham added to Rachel Barak's team
 
-רחל ברק מנהל את מחלקת פיתוח עם 3 עובדים
-יוסי כהן עובד
+Rachel Barak manages the Development department with 3 employees
+Yossi Cohen is working
 
-סה"כ עובדים במערכת: 4
+Total employees in system: 4
 ```

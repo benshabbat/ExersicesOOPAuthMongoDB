@@ -149,9 +149,9 @@ if (foundProduct) {
 
 ---
 
-## חלק ג': מחלקת StudentGrade
+## Part C: StudentGrade Class
 
-צור מחלקה `StudentGrade` למעקב אחר ציוני תלמידים.
+Create a `StudentGrade` class for tracking student grades.
 
 ```javascript
 class StudentGrade {
@@ -196,7 +196,7 @@ class StudentGrade {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("\n\n=== Grade System Test ===");
@@ -214,7 +214,7 @@ console.log(`Passing? ${student1.isPassing() ? "Yes ✓" : "No ✗"}`);
 
 ---
 
-## פלט צפוי
+## Expected Output
 
 ```
 === Store System Test ===
@@ -258,18 +258,18 @@ Passing? Yes ✓
 
 ---
 
-## טיפים
+## Tips
 
-- **forEach**: לעבור על כל האלמנטים במערך
-- **find**: למצוא אלמנט שמתאים לתנאי
-- **filter**: לסנן אלמנטים לפי תנאי
-- **reduce**: לחשב סכום/ערך מצטבר
-- **Math.max/min**: למצוא ערך מקסימלי/מינימלי
+- **forEach**: iterate over all elements in array
+- **find**: find an element that matches a condition
+- **filter**: filter elements by condition
+- **reduce**: calculate sum/cumulative value
+- **Math.max/min**: find maximum/minimum value
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. הוסף ל-Store מתודה `getMostExpensiveProduct()`
-2. הוסף ל-StudentGrade מתודה `removeLowestGrade()`
-3. צור מחלקה `ShoppingCart` עם מתודות add, remove, getTotal
+1. Add a `getMostExpensiveProduct()` method to Store
+2. Add a `removeLowestGrade()` method to StudentGrade
+3. Create a `ShoppingCart` class with add, remove, getTotal methods

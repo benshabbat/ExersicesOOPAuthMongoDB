@@ -1,16 +1,16 @@
-# תרגיל 7: הורשה (Inheritance) - יסודות
+# Exercise 7: Inheritance - Basics
 
-**רמת קושי:** גבוהה ⭐⭐⭐⭐  
-**זמן משוער:** 90-120 דקות
+**Difficulty Level:** High ⭐⭐⭐⭐  
+**Estimated Time:** 90-120 minutes
 
-## מטרה
-להבין את מושג ההורשה ב-OOP ושימוש ב-`extends` ו-`super`
+## Goal
+Understand the concept of inheritance in OOP and using `extends` and `super`
 
 ---
 
-## חלק א': מחלקת Animal ומחלקות ילדים
+## Part A: Animal Class and Child Classes
 
-צור מחלקת אב `Animal` ומחלקות ילדים שיורשות ממנה.
+Create a parent class `Animal` and child classes that inherit from it.
 
 ```javascript
 class Animal {
@@ -105,7 +105,7 @@ class Bird extends Animal {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("=== Animal Inheritance Test ===");
@@ -131,7 +131,7 @@ bird1.fly();
 
 ---
 
-## חלק ב': מחלקת Person ומחלקות ילדים
+## Part B: Person Class and Child Classes
 
 ```javascript
 class Person {
@@ -215,7 +215,7 @@ teacher1.teach();
 
 ---
 
-## חלק ג': מחלקת Vehicle ומחלקות ילדים
+## Part C: Vehicle Class and Child Classes
 
 ```javascript
 class Vehicle {
@@ -297,7 +297,7 @@ motorcycle1.wheelie(); // Now it should work
 
 ---
 
-## פלט צפוי
+## Expected Output
 
 ```
 === Animal Inheritance Test ===
@@ -336,18 +336,18 @@ Honda CBR does a wheelie! 🏍️
 
 ---
 
-## טיפים
+## Tips
 
-- **extends**: יוצר הורשה ממחלקת אב
-- **super()**: קורא לקונסטרקטור של מחלקת האב
-- **super.method()**: קורא למתודה של מחלקת האב
-- **Override**: דריסת מתודה מהאב במחלקת הבן
-- מחלקת בן יורשת את כל המתודות והמאפיינים מהאב
+- **extends**: Creates inheritance from parent class
+- **super()**: Calls the parent class constructor
+- **super.method()**: Calls the parent class method
+- **Override**: Overriding a parent method in child class
+- Child class inherits all methods and properties from parent
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. צור מחלקת `Fish` שיורשת מ-`Animal`
-2. הוסף מחלקת `Principal` שיורשת מ-`Teacher`
-3. צור מחלקת `Truck` שיורשת מ-`Vehicle`
+1. Create `Fish` class that inherits from `Animal`
+2. Add `Principal` class that inherits from `Teacher`
+3. Create `Truck` class that inherits from `Vehicle`

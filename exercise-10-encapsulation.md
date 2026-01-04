@@ -1,16 +1,16 @@
-# תרגיל 10: Encapsulation - הסתרת מידע
+# Exercise 10: Encapsulation - Information Hiding
 
-**רמת קושי:** גבוהה ⭐⭐⭐⭐  
-**זמן משוער:** 90-120 דקות
+**Difficulty Level:** High ⭐⭐⭐⭐  
+**Estimated Time:** 90-120 minutes
 
-## מטרה
-להבין את עקרון ההסתרה (Encapsulation), Private Fields, ו-Getters/Setters
+## Goal
+Understand the principle of encapsulation, Private Fields, and Getters/Setters
 
 ---
 
-## חלק א': חשבון בנק עם Private Fields
+## Part A: Bank Account with Private Fields
 
-צור מחלקת `BankAccount` עם מאפיינים פרטיים.
+Create a `BankAccount` class with private properties.
 
 ```javascript
 class BankAccount {
@@ -94,7 +94,7 @@ class BankAccount {
 }
 ```
 
-### בדיקה:
+### Testing:
 
 ```javascript
 console.log("=== Encapsulation Test - Bank Account ===");
@@ -115,7 +115,7 @@ account.withdraw(100, "5678"); // Now it works
 
 ---
 
-## חלק ב': מערכת משתמשים עם ולידציה
+## Part B: User System with Validation
 
 ```javascript
 class User {
@@ -209,7 +209,7 @@ user1.email = "newemail@example.com"; // Uses setter
 
 ---
 
-## חלק ג': מוצר עם Getters/Setters מתקדמים
+## Part C: Product with Advanced Getters/Setters
 
 ```javascript
 class Product {
@@ -290,7 +290,7 @@ console.log(product1.getInfo());
 
 ---
 
-## חלק ד': כרטיס אשראי עם Encapsulation מלא
+## Part D: Credit Card with Full Encapsulation
 
 ```javascript
 class CreditCard {
@@ -422,18 +422,18 @@ Card holder: Yossi Cohen
 
 ---
 
-## טיפים
+## Tips
 
-- **Private fields**: מתחילים ב-`#`, נגישים רק בתוך המחלקה
-- **Getter**: `get propertyName()` - מאפשר קריאה בלבד
-- **Setter**: `set propertyName(value)` - מאפשר כתיבה עם ולידציה
-- **Calculated getter**: getter שמחשב ערך דינמית
-- **Private methods**: `#methodName()` - מתודות פנימיות בלבד
+- **Private fields**: Start with `#`, accessible only within the class
+- **Getter**: `get propertyName()` - allows read-only access
+- **Setter**: `set propertyName(value)` - allows writing with validation
+- **Calculated getter**: getter that computes a value dynamically
+- **Private methods**: `#methodName()` - internal methods only
 
 ---
 
-## משימות נוספות (אופציונלי)
+## Additional Tasks (Optional)
 
-1. צור מחלקה `SecurePassword` עם הצפנה אמיתית
-2. הוסף ל-BankAccount מאפיין `transactionHistory`
-3. צור מחלקה `Wallet` עם מספר כרטיסי אשראי
+1. Create `SecurePassword` class with real encryption
+2. Add `transactionHistory` property to BankAccount
+3. Create `Wallet` class with multiple credit cards
