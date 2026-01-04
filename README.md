@@ -84,48 +84,36 @@ node my-solution-01.js
 <details open>
 <summary><b>🟡 שלב 2: עבודה עם Classes</b> (תרגילים 4-6) - רמה בינונית</summary>
 <br>
-- **תרגיל 4**: [מתודות סטטיות ו-this](exercise-04-static-methods.md)
-  - הבנת `this` לעומק
-  - מתודות סטטיות
-  - מאפיינים סטטיים
-  - שימוש מתקדם במחלקות
-  
-- **תרגיל 5**: [Arrays של אובייקטים](exercise-05-arrays-objects.md)
+
 | # | תרגיל | נושאים | קושי | זמן |
 |---|--------|---------|------|-----|
 | 4️⃣ | [מתודות סטטיות ו-this](exercise-04-static-methods.md) | Static Methods, `this` | ⭐⭐ | 60 דק' |
 | 5️⃣ | [Arrays של אובייקטים](exercise-05-arrays-objects.md) | Arrays, Complex Methods | ⭐⭐⭐ | 75 דק' |
-| 6️⃣ | Classes מתקדמים | Validation, Error Handling | ⭐⭐⭐ | 90 דק' |
+| 6️⃣ | [Classes מתקדמים](exercise-06-advanced-classes.md) | Validation, Error Handling | ⭐⭐⭐ | 90 דק' |
 
 </details>
 
 <details open>
 <summary><b>🟠 שלב 3: הורשה</b> (תרגילים 7-9) - רמה מתקדמת</summary>
 <br>
-  - הורשה רב-שכבתית
+
 | # | תרגיל | נושאים | קושי | זמן |
 |---|--------|---------|------|-----|
 | 7️⃣ | [הורשה - יסודות](exercise-07-inheritance-basics.md) | `extends`, `super`, Override | ⭐⭐⭐⭐ | 90 דק' |
-| 8️⃣ | הורשה מתקדמת | Multi-level Inheritance | ⭐⭐⭐⭐ | 120 דק' |
-| 9️⃣ | פולימורפיזם | Polymorphism | ⭐⭐⭐⭐ | 120 דק' |
+| 8️⃣ | [הורשה מתקדמת](exercise-08-advanced-inheritance.md) | Multi-level Inheritance | ⭐⭐⭐⭐ | 120 דק' |
+| 9️⃣ | [פולימורפיזם](exercise-09-polymorphism.md) | Polymorphism | ⭐⭐⭐⭐ | 120 דק' |
 
 </details>
 
 <details open>
 <summary><b>🔴 שלב 4: Encapsulation ופרויקטים</b> (תרגילים 10-12) - רמה מקצועית</summary>
 <br>
-  - ניהול ספרים, כתבי עת, DVDs
-  - מערכת חברי ספריה
-  - השאלה והחזרה
-  - חיפוש וסטטיסטיקות
-  
-- **תרגיל 12**: פרויקט מתקדם - חנות אונליין (בקרוב)
-  - מערכת e-commerce מלאה
+
 | # | תרגיל | נושאים | קושי | זמן |
 |---|--------|---------|------|-----|
 | 🔟 | [הסתרת מידע](exercise-10-encapsulation.md) | Private Fields, Getters/Setters | ⭐⭐⭐⭐ | 120 דק' |
-| 1️⃣1️⃣ | פרויקט ספריה | Full OOP Project | 🔥🔥🔥 | 180 דק' |
-| 1️⃣2️⃣ | פרויקט E-Commerce | Production-Ready App | 🔥🔥🔥 | 180 דק' |
+| 1️⃣1️⃣ | [פרויקט ספריה](exercise-11-library-project.md) | Full OOP Project | 🔥🔥🔥 | 180 דק' |
+| 1️⃣2️⃣ | [פרויקט E-Commerce](exercise-12-ecommerce-project.md) | Production-Ready App | 🔥🔥🔥 | 180 דק' |
 
 </details>
 
@@ -133,7 +121,7 @@ node my-solution-01.js
 
 ## 🎯 מה תלמד?
 
-###📖 איך להשתמש במדריך?
+##### 📖 איך להשתמש במדריך?
 
 ### תהליך הלמידה (5 שלבים)
 
@@ -167,46 +155,17 @@ New-Item my-solution-01.js
 <details>
 <summary><b>3️⃣ כתוב את הקוד</b></summary>
 
-<table>
-<tr>
-<td width="50%">
+- העתק את הקוד מהתרגיל
+- השלם את החלקים: `// Write your code here`
+- בדוק syntax ב-VS Code
+- שמור את הקובץ
 
-### 🌱 למתחילים
+</details>
 
-- 🐢 **אל תמהר** - קח את הזמן להבין כל קונספט
-- ✍️ **כתוב הרבה** - תרגול עושה את ההבדל
-- 🔍 **נסה בעצמך** - לפני לצפות בפתרונות
-- 💬 **תשאל שאלות** - אין שאלות טיפשיות
-- 📝 **רשום הערות** - תעד מה למדת
-- ⏸️ **קח הפסקות** - המוח צריך זמן לעכל
-OOP - מדריך מהיר
-</td>
-<td width="50%">
+<details>
+<summary><b>4️⃣ הרץ ובדוק</b></summary>
 
-### 🚀 למתקדמים
-
-- ➕ **הוסף פיצ'רים** - הרחב את התרגילים
-- ⚡ **שפר ביצועים** - חפש דרכים יעילות
-- 🎨 **למד דפוסים** - הכר Design Patterns
-- 👥 **שתף ידע** - עזור לאחרים ללמוד
-- 🔄 **רפקטור** - שפר קוד קיים
-- 📊 **השווה פתרונות** - למד מגישות אחרות
-
-</td>
-</tr>
-</table>
-
-### 🎯 אסטרטגיות למידה
-
-| אסטרטגיה | תיאור | מתי להשתמש |
-|-----------|--------|------------|
-| 🔁 **חזרה** | עבור שוב על תרגילים קודמים | כל 3-4 תרגילים |
-| 🤔 **הסבר עצמי** | הסבר את הקוד בקול רם | אחרי כל תרגיל |
-| 📝 **כתיבה חוזרת** | כתוב את הקוד מחדש מזיכרון | ביום שלמחרת |
-| 🎲 **וריאציות** | שנה דרישות ונסה שוב | אחרי סיום מוצלח |
-| 👨‍🏫 **לימוד אחרים** | למד חבר או כתוב הסבר | כשאתה מבין לעומק |
-
----
+```bash
 # הרץ את הקוד
 node my-solution-01.js
 
@@ -226,9 +185,37 @@ node my-solution-01.js
 </details>
 
 ---
-אותה מתודה, התנהגויות שונות
 
----
+## 💡 טיפים ללמידה
+
+<table>
+<tr>
+<td width="50%">
+
+### 🌱 למתחילים
+
+- 🐢 **אל תמהר** - קח את הזמן להבין כל קונספט
+- ✍️ **כתוב הרבה** - תרגול עושה את ההבדל
+- 🔍 **נסה בעצמך** - לפני לצפות בפתרונות
+- 💬 **תשאל שאלות** - אין שאלות טיפשיות
+- 📝 **רשום הערות** - תעד מה למדת
+- ⏸️ **קח הפסקות** - המוח צריך זמן לעכל
+
+</td>
+<td width="50%">
+
+### 🚀 למתקדמים
+
+- ➕ **הוסף פיצ'רים** - הרחב את התרגילים
+- ⚡ **שפר ביצועים** - חפש דרכים יעילות
+- 🎨 **למד דפוסים** - הכר Design Patterns
+- 👥 **שתף ידע** - עזור לאחרים ללמוד
+- 🔄 **רפקטור** - שפר קוד קיים
+- 📊 **השווה פתרונות** - למד מגישות אחרות
+
+</td>
+</tr>
+</table>
 
 ## 📖 מילון מונחים
 
@@ -277,12 +264,58 @@ node my-solution-01.js
 - 💡 הכרת ES6+ features
 - 💡 עבודה עם npm
 - 💡 ניסיון עם Git
-- 💡 ידע בסיסי ב-HTML/CSS (לפרויקטים)עות | 2.5 שעות | 6 שעות |
+- 💡 ידע בסיסי ב-HTML/CSS (לפרויקטים)
+
+---
+
+## 📊 התקדמות ומעקב
+
+### מפת הלמידה שלך
+
+```
+🟢🟢🟢 ──→ 🟡🟡🟡 ──→ 🟠🟠🟠 ──→ 🔴🔴🔴
+יסודות      Classes    Inheritance  Projects
+(1-3)        (4-6)        (7-9)      (10-12)
+```
+
+### זמן למידה משוער
+
+| שלב | תרגילים | זמן כולל | מסלול מהיר | מסלול מעמיק |
+|-----|----------|----------|-----------|-------------|
+| 🟢 יסודות | 1-3 | 2.5 שעות | 1.5 שעה | 4 שעות |
+| 🟡 Classes | 4-6 | 4 שעות | 2.5 שעות | 6 שעות |
 | 🟠 Inheritance | 7-9 | 6 שעות | 4 שעות | 9 שעות |
 | 🔴 Projects | 10-12 | 8 שעות | 5 שעות | 12 שעות |
 | **סה"כ** | **12** | **20.5 שעות** | **13 שעות** | **31 שעות** |
 
-> 💡 **המלצה:** התקדם במהירות שלך, איכות עדיפה על כמות!/td>
+> 💡 **המלצה:** התקדם במהירות שלך, איכות עדיפה על כמות!
+
+---
+
+## ⚡ דרישות מערכת
+
+## 📖 מילון מונחים
+
+<table>
+<tr>
+<th>מונח</th>
+<th>הסבר</th>
+<th>דוגמה</th>
+</tr>
+<tr>
+<td><code>Class</code></td>
+<td>תבנית ליצירת אובייקטים</td>
+<td><code>class Car { }</code></td>
+</tr>
+<tr>
+<td><code>Object</code></td>
+<td>מופע של מחלקה</td>
+<td><code>const myCar = new Car()</code></td>
+</tr>
+<tr>
+<td><code>Constructor</code></td>
+<td>פונקציה שרצה בעת יצירה</td>
+<td><code>constructor(name) { }</code></td>
 </tr>
 <tr>
 <td><code>Method</code></td>
@@ -320,6 +353,100 @@ node my-solution-01.js
 <td><code>#password</code></td>
 </tr>
 <tr>
+<td><code>get/set</code></td>
+<td>Getter/Setter</td>
+<td><code>get name()</code></td>
+</tr>
+</table>
+
+---
+
+## 🎓 אחרי התרגילים
+
+<div align="center">
+
+### מה תדע לעשות?
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+### ✅ יכולות טכניות
+
+- ✔️ לבנות אפליקציות מורכבות עם OOP
+- ✔️ להבין ולהשתמש בעקרונות OOP בכל שפה
+- ✔️ לקרוא ולהבין קוד של אחרים
+- ✔️ לתכנן מערכות גדולות ומורכבות
+- ✔️ לעבור לנושאים מתקדמים
+
+</td>
+<td width="50%">
+
+### 🚀 הצעדים הבאים
+
+- 📐 **Design Patterns** - תבניות עיצוב
+- 🎯 **SOLID Principles** - עקרונות מתקדמים
+- ⚛️ **React/Vue** - Frameworks מודרניים
+- 🟦 **TypeScript** - JavaScript עם Types
+- 🧪 **Testing** - בדיקות אוטומטיות
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📚 משאבים נוספים
+
+### 📄 תיעוד רשמי
+
+- 📘 [MDN - Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- 📙 [MDN - OOP JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
+
+### 📖 מאמרים ומדריכים
+
+- 🌐 [JavaScript.info - Classes](https://javascript.info/classes)
+- 🎓 [FreeCodeCamp - OOP in JS](https://www.freecodecamp.org/news/object-oriented-programming-javascript/)
+- 📝 [W3Schools - JavaScript Classes](https://www.w3schools.com/js/js_classes.asp)
+
+### 📚 ספרים מומלצים
+
+| ספר | מחבר | רמה | נושא |
+|-----|------|-----|------|
+| "Eloquent JavaScript" | Marijn Haverbeke | 🟢 מתחיל | JS כללי |
+| "You Don't Know JS" | Kyle Simpson | 🟡 בינוני | JS עומק |
+| "JavaScript: The Good Parts" | Douglas Crockford | 🟠 מתקדם | Best Practices |
+| "Clean Code" | Robert C. Martin | 🔴 מקצועי | קוד איכותי |
+
+---
+
+## 🤝 תרומה לפרויקט
+
+אנחנו מעודדים תרומות מהקהילה! 
+
+### איך לתרום?
+
+1. 🍴 **Fork** את הפרויקט
+2. 🌿 **צור branch** חדש (`git checkout -b feature/amazing-exercise`)
+3. ✍️ **עשה שינויים** והוסף תרגילים/שיפורים
+4. 💾 **Commit** (`git commit -m 'Add amazing exercise'`)
+5. 📤 **Push** (`git push origin feature/amazing-exercise`)
+6. 🎉 **פתח Pull Request**
+
+### מה אפשר לתרום?
+
+- 🐛 תיקוני באגים
+- ✨ תרגילים חדשים
+- 📝 שיפור תיעוד
+- 🌍 תרגומים
+- 💡 הצעות לשיפור
+
+### דיווח על בעיות
+
+מצאת באג? [פתח Issue](https://github.com/benshabbat/ExersicesOOPAuthMongoDB/issues)
+
 ---
 
 ## 🌟 תומכים ותורמים
