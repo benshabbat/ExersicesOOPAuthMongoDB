@@ -9,18 +9,19 @@
 class Book {
     // הוסף קונסטרקטור שמקבל: title, author, pages
     constructor(title, author, pages) {
-        // אתחל את המאפיינים כאן
+        // Hint: this.propertyName = parameterValue
+        // Initialize title, author, and pages as properties
     }
     
     // הוסף מתודה getInfo שמחזירה מחרוזת עם פרטי הספר
     getInfo() {
-        // כתוב את הקוד כאן
-        // החזר מחרוזת בפורמט: "ספר: [כותרת], מאת: [מחבר], עמודים: [מספר עמודים]"
+        // Hint: return a template string with this.title, this.author, this.pages
+        // Format: "ספר: [כותרת], מאת: [מחבר], עמודים: [מספר עמודים]"
     }
     
     // הוסף מתודה isLongBook שמחזירה true אם יש יותר מ-300 עמודים
     isLongBook() {
-        // כתוב את הקוד כאן
+        // Hint: return this.pages > 300
     }
 }
 
@@ -38,31 +39,29 @@ console.log("האם ספר ארוך?", book2.isLongBook());
 // חלק ב': צור מחלקה BankAccount
 class BankAccount {
     // הוסף קונסטרקטור שמקבל: ownerName, initialBalance
-    constructor(ownerName, initialBalance) {
-        // אתחל את המאפיינים כאן
-        // initialBalance ברירת מחדל: 0
+    constructor(ownerName, initialBalance = 0) {
+        // Hint: Initialize ownerName and balance properties
+        // Hint: this.ownerName = ownerName
+        // Hint: this.balance = initialBalance
     }
     
     // הוסף מתודה deposit (הפקדה) שמקבלת סכום ומוסיפה אותו ליתרה
     deposit(amount) {
-        // בדוק שהסכום חיובי
-        if (amount > 0) {
-            // הוסף את הסכום ליתרה
-            console.log(`הופקדו ${amount} ש"ח. יתרה חדשה: ${this.balance} ש"ח`);
-        } else {
-            console.log("שגיאה: הסכום חייב להיות חיובי");
-        }
+        // Hint: check if amount > 0
+        // Hint: if valid, add to this.balance
+        // Hint: log success message with new balance
     }
     
     // הוסף מתודה withdraw (משיכה) שמקבלת סכום ומחסירה אותו מהיתרה
     withdraw(amount) {
-        // בדוק שהסכום חיובי ושיש מספיק כסף בחשבון
-        // כתוב את הקוד כאן
+        // Hint: check if amount > 0 and amount <= this.balance
+        // Hint: if valid, subtract from this.balance
+        // Hint: log success or error message
     }
     
     // הוסף מתודה getBalance שמחזירה את היתרה הנוכחית
     getBalance() {
-        // כתוב את הקוד כאן
+        // Hint: return this.balance
     }
     
     // הוסף מתודה getAccountInfo שמדפיסה את פרטי החשבון
@@ -84,22 +83,23 @@ account1.getAccountInfo();
 // חלק ג': צור מחלקה Rectangle (מלבן)
 class Rectangle {
     constructor(width, height) {
-        // אתחל את המאפיינים כאן
+        // Hint: Initialize width and height properties
+        // Hint: this.width = width; this.height = height
     }
     
     // הוסף מתודה getArea שמחזירה את השטח (רוחב * גובה)
     getArea() {
-        // כתוב את הקוד כאן
+        // Hint: multiply this.width by this.height and return the result
     }
     
     // הוסף מתודה getPerimeter שמחזירה את ההיקף (2 * (רוחב + גובה))
     getPerimeter() {
-        // כתוב את הקוד כאן
+        // Hint: return 2 * (this.width + this.height)
     }
     
     // הוסף מתודה isSquare שמחזירה true אם זה ריבוע (רוחב = גובה)
     isSquare() {
-        // כתוב את הקוד כאן
+        // Hint: return this.width === this.height
     }
 }
 

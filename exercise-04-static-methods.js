@@ -9,37 +9,30 @@
 class Car {
     // הוסף קונסטרקטור שמקבל: brand, model, year
     constructor(brand, model, year) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.mileage = 0; // קילומטראז' מתחיל מ-0
+        // Hint: Initialize brand, model, year, and mileage (start at 0)
+        // Hint: this.brand = brand; this.model = model; etc.
     }
     
     // הוסף מתודה drive שמקבלת מספר קילומטרים ומוסיפה אותם למספר הק"מ
     drive(kilometers) {
-        // כתוב את הקוד כאן
-        console.log(`הרכב נסע ${kilometers} ק"מ. קילומטראז' כולל: ${this.mileage} ק"מ`);
+        // Hint: add kilometers to this.mileage
+        // Hint: log the message with current mileage
     }
     
     // הוסף מתודה getAge שמחזירה את גיל הרכב (2026 - שנת ייצור)
     getAge() {
-        // כתוב את הקוד כאן
+        // Hint: return 2026 - this.year
     }
     
     // הוסף מתודה getCarInfo שמחזירה מחרוזת עם כל פרטי הרכב
     getCarInfo() {
-        return `${this.brand} ${this.model} (${this.year}) - ${this.mileage} ק"מ`;
+        // Hint: return a template string with brand, model, year, and mileage
     }
     
     // מתודה סטטית - compare שמשווה בין שני רכבים לפי קילומטראז'
     static compare(car1, car2) {
-        if (car1.mileage > car2.mileage) {
-            return `${car1.brand} ${car1.model} נסע יותר`;
-        } else if (car2.mileage > car1.mileage) {
-            return `${car2.brand} ${car2.model} נסע יותר`;
-        } else {
-            return "שני הרכבים נסעו אותו מרחק";
-        }
+        // Hint: compare car1.mileage with car2.mileage
+        // Hint: return appropriate message based on comparison
     }
 }
 
@@ -61,31 +54,29 @@ console.log(Car.compare(car1, car2));
 class Temperature {
     // הוסף קונסטרקטור שמקבל טמפרטורה בצלזיוס
     constructor(celsius) {
-        // כתוב את הקוד כאן
+        // Hint: Initialize this.celsius = celsius
     }
     
     // הוסף מתודה toFahrenheit שמחזירה את הטמפרטורה בפרנהייט
     toFahrenheit() {
-        // נוסחה: (celsius * 9/5) + 32
-        // כתוב את הקוד כאן
+        // Hint: use formula (this.celsius * 9/5) + 32
     }
     
     // הוסף מתודה toKelvin שמחזירה את הטמפרטורה בקלווין
     toKelvin() {
-        // נוסחה: celsius + 273.15
-        // כתוב את הקוד כאן
+        // Hint: use formula this.celsius + 273.15
     }
     
     // מתודה סטטית - fromFahrenheit שיוצרת אובייקט Temperature מפרנהייט
     static fromFahrenheit(fahrenheit) {
-        const celsius = (fahrenheit - 32) * 5/9;
-        return new Temperature(celsius);
+        // Hint: convert to celsius: (fahrenheit - 32) * 5/9
+        // Hint: return new Temperature(celsius)
     }
     
     // מתודה סטטית - fromKelvin שיוצרת אובייקט Temperature מקלווין
     static fromKelvin(kelvin) {
-        // כתוב את הקוד כאן
-        // צור והחזר אובייקט Temperature חדש
+        // Hint: convert to celsius: kelvin - 273.15
+        // Hint: return new Temperature(celsius)
     }
 }
 
@@ -105,29 +96,29 @@ class Counter {
     static totalCounters = 0;
     
     constructor(initialValue = 0) {
-        this.value = initialValue;
-        Counter.totalCounters++; // הגדל את המונה הכללי
-        this.id = Counter.totalCounters; // תן לכל מונה מזהה ייחודי
+        // Hint: Initialize this.value = initialValue
+        // Hint: Increment Counter.totalCounters
+        // Hint: Set this.id = Counter.totalCounters
     }
     
     // הוסף מתודה increment שמגדילה את הערך ב-1
     increment() {
-        // כתוב את הקוד כאן
+        // Hint: this.value++
     }
     
     // הוסף מתודה decrement שמקטינה את הערך ב-1
     decrement() {
-        // כתוב את הקוד כאן
+        // Hint: this.value--
     }
     
     // הוסף מתודה reset שמאפסת את הערך
     reset() {
-        // כתוב את הקוד כאן
+        // Hint: this.value = 0
     }
     
     // מתודה סטטית שמחזירה כמה מונים נוצרו
     static getTotalCounters() {
-        return Counter.totalCounters;
+        // Hint: return Counter.totalCounters
     }
 }
 

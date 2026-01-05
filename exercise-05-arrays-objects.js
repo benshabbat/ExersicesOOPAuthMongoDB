@@ -8,79 +8,69 @@
 // חלק א': צור מחלקה Product למוצרים בחנות
 class Product {
     constructor(name, price, quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+        // Hint: Initialize name, price, and quantity properties
+        // Hint: this.name = name; etc.
     }
     
     // הוסף מתודה getTotalValue שמחזירה את הערך הכולל (מחיר * כמות)
     getTotalValue() {
-        // כתוב את הקוד כאן
+        // Hint: multiply this.price by this.quantity and return
     }
     
     // הוסף מתודה sell שמקבלת כמות למכירה
     sell(amount) {
-        if (amount <= this.quantity) {
-            this.quantity -= amount;
-            console.log(`נמכרו ${amount} יחידות של ${this.name}. נותרו: ${this.quantity}`);
-            return true;
-        } else {
-            console.log(`שגיאה: אין מספיק ${this.name} במלאי (יש רק ${this.quantity})`);
-            return false;
-        }
+        // Hint: check if amount <= this.quantity
+        // Hint: if yes, subtract amount from quantity and return true
+        // Hint: if no, log error and return false
     }
     
     // הוסף מתודה restock שמקבלת כמות להוספה למלאי
     restock(amount) {
-        // כתוב את הקוד כאן
+        // Hint: add amount to this.quantity
+        // Hint: log message with new quantity
     }
     
     getInfo() {
-        return `${this.name} - ₪${this.price} (${this.quantity} יחידות)`;
+        // Hint: return template string with name, price, quantity
     }
 }
 
 // חלק ב': צור מחלקה Store שמנהלת חנות
 class Store {
     constructor(storeName) {
-        this.storeName = storeName;
-        this.products = []; // מערך של מוצרים
+        // Hint: Initialize storeName and products array
+        // Hint: this.storeName = storeName; this.products = [];
     }
     
     // הוסף מתודה addProduct שמוסיפה מוצר לחנות
     addProduct(product) {
-        // כתוב את הקוד כאן
-        console.log(`${product.name} נוסף לחנות ${this.storeName}`);
+        // Hint: use this.products.push(product)
+        // Hint: log success message
     }
     
     // הוסף מתודה findProduct שמחפשת מוצר לפי שם
     findProduct(productName) {
-        // רמז: השתמש ב-find או ב-for loop
-        // כתוב את הקוד כאן
+        // Hint: use .find() method on this.products
+        // Hint: compare product.name with productName
     }
     
     // הוסף מתודה getTotalInventoryValue שמחזירה את הערך הכולל של כל המלאי
     getTotalInventoryValue() {
-        let total = 0;
-        // עבור על כל המוצרים וחשב את הסכום הכולל
-        // רמז: השתמש ב-forEach או ב-for loop
-        // כתוב את הקוד כאן
-        return total;
+        // Hint: start with total = 0
+        // Hint: use forEach or for loop to sum product.getTotalValue()
+        // Hint: return total
     }
     
     // הוסף מתודה listProducts שמדפיסה את כל המוצרים
     listProducts() {
-        console.log(`\nמוצרים בחנות ${this.storeName}:`);
-        this.products.forEach((product, index) => {
-            console.log(`${index + 1}. ${product.getInfo()}`);
-        });
+        // Hint: log header with storeName
+        // Hint: use forEach to print each product's info
     }
     
     // הוסף מתודה getLowStockProducts שמחזירה מוצרים עם כמות נמוכה
     getLowStockProducts(threshold = 5) {
-        // החזר מערך של מוצרים שהכמות שלהם קטנה או שווה ל-threshold
-        // רמז: השתמש ב-filter
-        // כתוב את הקוד כאן
+        // Hint: use .filter() on this.products
+        // Hint: filter where product.quantity <= threshold
     }
 }
 
@@ -140,8 +130,8 @@ class StudentGrade {
     // הוסף מתודה addGrade שמוסיפה ציון
     addGrade(grade) {
         if (grade >= 0 && grade <= 100) {
-            // כתוב את הקוד כאן
-            console.log(`ציון ${grade} נוסף ל-${this.studentName}`);
+            // Hint: push grade to this.grades array
+            // Hint: log success message
         } else {
             console.log("שגיאה: ציון חייב להיות בין 0 ל-100");
         }
@@ -150,25 +140,23 @@ class StudentGrade {
     // הוסף מתודה getAverage שמחזירה את ממוצע הציונים
     getAverage() {
         if (this.grades.length === 0) return 0;
-        // חשב ממוצע
-        // רמז: סכום כל הציונים חלקי מספר הציונים
-        // כתוב את הקוד כאן
+        // Hint: sum all grades and divide by grades.length
+        // Hint: use reduce() or loop to sum
     }
     
     // הוסף מתודה getHighestGrade שמחזירה את הציון הגבוה ביותר
     getHighestGrade() {
-        // רמז: השתמש ב-Math.max(...this.grades)
-        // כתוב את הקוד כאן
+        // Hint: use Math.max(...this.grades)
     }
     
     // הוסף מתודה getLowestGrade שמחזירה את הציון הנמוך ביותר
     getLowestGrade() {
-        // כתוב את הקוד כאן
+        // Hint: use Math.min(...this.grades)
     }
     
     // הוסף מתודה isPassing שמחזירה true אם הממוצע מעל 60
     isPassing() {
-        // כתוב את הקוד כאן
+        // Hint: return this.getAverage() > 60
     }
 }
 

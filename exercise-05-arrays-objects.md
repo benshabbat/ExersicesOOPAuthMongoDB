@@ -15,35 +15,30 @@ Create a `Product` class for store products.
 ```javascript
 class Product {
     constructor(name, price, quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+        // Initialize the three properties
+        // Hint: this.propertyName = parameterName
     }
     
     // Add method getTotalValue that returns total value (price * quantity)
     getTotalValue() {
-        // Write your code here
+        // Hint: multiply price by quantity
     }
     
     // Add method sell that receives amount to sell
     sell(amount) {
-        if (amount <= this.quantity) {
-            this.quantity -= amount;
-            console.log(`Sold ${amount} units of ${this.name}. Remaining: ${this.quantity}`);
-            return true;
-        } else {
-            console.log(`Error: Not enough ${this.name} in stock (only ${this.quantity})`);
-            return false;
-        }
+        // Hint: Check if amount <= quantity
+        // If yes: subtract amount from quantity and return true
+        // If no: show error message and return false
     }
     
     // Add method restock that receives amount to add to inventory
     restock(amount) {
-        // Write your code here
+        // Hint: add amount to current quantity
     }
     
     getInfo() {
-        return `${this.name} - $${this.price} (${this.quantity} units)`;
+        // Hint: return a string with name, price, and quantity
+        // Format: "ProductName - $price (quantity units)"
     }
 }
 ```
@@ -57,44 +52,39 @@ Create a `Store` class that manages a store.
 ```javascript
 class Store {
     constructor(storeName) {
-        this.storeName = storeName;
-        this.products = []; // Array of products
+        // Initialize storeName and create empty products array
+        // Hint: this.products = [];
     }
     
     // Add method addProduct that adds product to store
     addProduct(product) {
-        // Write your code here
-        console.log(`${product.name} added to ${this.storeName}`);
+        // Hint: push the product into this.products array
+        // Then console.log a message
     }
     
     // Add method findProduct that searches product by name
     findProduct(productName) {
-        // Hint: use find or for loop
-        // Write your code here
+        // Hint: use this.products.find() with product.name === productName
     }
     
     // Add method getTotalInventoryValue that returns total value of all inventory
     getTotalInventoryValue() {
-        let total = 0;
-        // Loop through all products and calculate total
-        // Hint: use forEach or for loop
-        // Write your code here
-        return total;
+        // Hint: Loop through this.products
+        // For each product, add product.getTotalValue() to total
+        // Return the total
     }
     
     // Add method listProducts that prints all products
     listProducts() {
-        console.log(`\nProducts in ${this.storeName}:`);
-        this.products.forEach((product, index) => {
-            console.log(`${index + 1}. ${product.getInfo()}`);
-        });
+        // Hint: console.log header with store name
+        // Use forEach to print each product with index
+        // Call product.getInfo() for each product
     }
     
     // Add method getLowStockProducts that returns products with low quantity
     getLowStockProducts(threshold = 5) {
-        // Return array of products with quantity <= threshold
-        // Hint: use filter
-        // Write your code here
+        // Hint: use this.products.filter()
+        // Return products where product.quantity <= threshold
     }
 }
 ```
