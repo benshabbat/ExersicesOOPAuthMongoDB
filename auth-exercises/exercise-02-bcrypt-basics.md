@@ -1,35 +1,114 @@
-# Exercise 02 - Password Hashing with bcrypt
+# Exercise 02 - Password Hashing with bcrypt (הצפנת סיסמאות)
 
 ## Objective
-Learn how to hash passwords using bcrypt and verify them securely.
+ללמוד איך להצפין סיסמאות בצורה מאובטחת באמצעות bcrypt.
 
-## Background
+## למה צריך להצפין סיסמאות? 🔐
 
-**Why hash passwords?**
-- Never store plain text passwords in a database
-- Hashing is a one-way function - you can't reverse it
-- bcrypt adds "salt" to make each hash unique, even for the same password
-- bcrypt is intentionally slow to prevent brute-force attacks
+דמיין שיש לך אתר עם משתמשים, ומישהו פורץ למסד הנתונים שלך...
 
-## Requirements
+### ❌ רע - שמירת סיסמאות כמו שהן:
+```javascript
+users = [
+  { email: "yosi@example.com", password: "123456" },
+  { email: "dana@example.com", password: "password123" }
+]
+```
+**הבעיה:** הפורץ רואה את כל הסיסמאות! 😱
 
-1. Create a function `hashPassword(password)` that:
-   - Takes a plain text password
-   - Returns a hashed version using bcrypt
-   - Uses a salt rounds value of 10
+### ✅ טוב - שמירת סיסמאות מוצפנות:
+```javascript
+users = [
+  { email: "yosi@example.com", password: "$2b$10$XYZ..." },
+  { email: "dana@example.com", password: "$2b$10$ABC..." }
+]
+```
+**טוב כי:** הפורץ רואה רק ערבוביה של תווים שאי אפשר לפענח! 🛡️
 
-2. Create a function `verifyPassword(password, hashedPassword)` that:
-   - Takes a plain text password and a hashed password
-   - Returns true if they match, false otherwise
+## מה זה Hashing (גיבוב)?
 
-3. Create an Express endpoint `POST /api/test-hash` that:
-   - Accepts a password in the request body
-   - Returns both the original and hashed password
-   - Shows how long the hashing took
+**Hashing** זו פעולה חד-כיוונית:
+- `"123456"` → Hashing → `"$2b$10$XYZ..."`
+- אבל **לא ניתן** לעשות: `"$2b$10$XYZ..."` → `"123456"`
 
-4. Create an Express endpoint `POST /api/test-verify` that:
-   - Accepts `password` and `hashedPassword` in the request body
-   - Returns whether they match
+זה כמו להפוך ביצה לחביתה - אי אפשר להחזיר את הביצה! 🍳
+
+## מה זה bcrypt?
+
+bcrypt זו ספרייה פופולרית להצפנת סיסמאות. היא:
+- מוסיפה "מלח" (salt) - משהו רנדומלי לכל סיסמה
+- איטית במתכוון (קשה לפרוץ)
+- בטוחה ומוכחת
+
+## שלב 1: התקנת bcrypt
+
+ראשית, התקן את חבילת bcrypt:
+
+```bash
+npm install bcrypt
+```
+
+## שלב 2: הבנת הפונקציות הבסיסיות
+
+### פונקציה 1: הצפנת סיסמה
+```javascript
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // רמת האבטחה
+
+async function hashPassword(password) {
+  const hashed = await bcrypt.hash(password, saltRounds);
+  return hashed;
+}
+```
+
+### פונקציה 2: בדיקת סיסמה
+```javascript
+async function verifyPassword(password, hashedPassword) {
+  const isMatch = await bcrypt.compare(password, hashedPassword);
+  return isMatch; // true או false
+}
+```
+
+## שלב 3: נסה בעצמך!
+
+עכשיו תיצור שרת Express עם שני endpoints:
+
+### Endpoint 1: `/api/hash-password` (POST)
+**מטרה:** להצפין סיסמה
+
+**מקבל:**
+```json
+{
+  "password": "123456"
+}
+```
+
+**מחזיר:**
+```json
+{
+  "original": "123456",
+  "hashed": "$2b$10$XYZ..."
+}
+```
+
+### Endpoint 2: `/api/verify-password` (POST)
+**מטרה:** לבדוק אם סיסמה תואמת להצפנה
+
+**מקבל:**
+```json
+{
+  "password": "123456",
+  "hashedPassword": "$2b$10$XYZ..."
+}
+```
+
+**מחזיר:**
+```json
+{
+  "match": true,
+  "message": "הסיסמה נכונה!"
+}
+```
 
 ## Expected Output
 
@@ -58,13 +137,44 @@ Response:
 }
 ```
 
-## Tips
+## טיפים חשובים 💡
 
-- Import bcrypt: `const bcrypt = require('bcrypt')`
-- Use `bcrypt.hash(password, saltRounds)` to hash
-- Use `bcrypt.compare(password, hash)` to verify
-- Both functions are asynchronous - use async/await or promises
-- Higher salt rounds = more secure but slower (10 is a good balance)
+### איך להשתמש ב-async/await?
+
+```javascript
+// דרך נכונה ✅
+app.post('/api/hash-password', async function(req, res) {
+  const password = req.body.password;
+  const hashed = await hashPassword(password); // ממתין לתוצאה
+  res.json({ original: password, hashed: hashed });
+});
+```
+
+### למה צריך express.json()?
+
+כדי לקבל נתונים מ-POST request, חייבים להוסיף:
+
+```javascript
+app.use(express.json()); // לפני כל ה-routes!
+```
+
+### איך לבדוק POST request?
+
+**ב-Thunder Client:**
+1. לחץ על "New Request"
+2. בחר "POST"
+3. כתובת: `http://localhost:3000/api/hash-password`
+4. לחץ על "Body" → "JSON"
+5. כתוב: `{ "password": "123456" }`
+6. לחץ "Send"
+
+### מה זה saltRounds?
+
+- **saltRounds = 10** - מאובטח ומהיר (מומלץ)
+- **saltRounds = 12** - יותר מאובטח, אבל יותר איטי
+- **saltRounds = 8** - פחות מאובטח, אבל מהיר
+
+10 זה האיזון הטוב ביותר!
 
 ## Bonus Challenges
 

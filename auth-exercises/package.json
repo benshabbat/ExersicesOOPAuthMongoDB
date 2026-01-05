@@ -2,6 +2,7 @@
   "name": "auth-exercises",
   "version": "1.0.0",
   "description": "Authentication exercises with Express, JWT, and bcrypt",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

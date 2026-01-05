@@ -1,52 +1,148 @@
-# Exercise 01 - Express Server Setup
+# Exercise 01 - Express Server Setup (הקמת שרת ראשון!)
 
 ## Objective
-Learn how to set up a basic Express.js server with proper structure and middleware.
+ליצור שרת Express פשוט שעונה לבקשות HTTP.
 
-## Requirements
+## מה זה Express?
+Express זה ספרייה (framework) שעוזרת לנו לבנות שרתי API בקלות. במקום לכתוב הרבה קוד מסובך, Express עושה את העבודה הקשה בשבילנו.
 
-1. Create a basic Express server that listens on port 3000
-2. Add middleware for:
-   - JSON body parsing
-   - URL-encoded data parsing
-   - CORS (Cross-Origin Resource Sharing)
-3. Create the following routes:
-   - `GET /` - Returns a welcome message
-   - `GET /health` - Returns server health status
-   - `GET /api/info` - Returns API information (version, name, etc.)
-4. Add error handling middleware
+## מה זה שרת?
+שרת זה תוכנה שמקשיבה לבקשות (requests) ומחזירה תשובות (responses). כמו מלצר במסעדה שמקבל הזמנות ומביא אוכל!
 
-## Expected Output
+## שלב 1: הכנה
 
-When you run the server:
-```
-Server is running on port 3000
+ודא שאתה בתיקיית `auth-exercises` והתקן את Express:
+
+```bash
+npm install express
 ```
 
-When you visit `http://localhost:3000/`:
+## שלב 2: יצירת שרת בסיסי ביותר
+
+צור קובץ `server-basic.js`:
+
+```javascript
+// ייבוא Express
+const express = require('express');
+
+// יצירת אפליקציית Express
+const app = express();
+
+// יצירת נתיב (route) - כמו כתובת בשרת
+app.get('/', function(req, res) {
+  res.send('שלום עולם! השרת עובד!');
+});
+
+// הפעלת השרת על פורט 3000
+app.listen(3000, function() {
+  console.log('השרת רץ על http://localhost:3000');
+});
+```
+
+הרץ את השרת:
+```bash
+node server-basic.js
+```
+
+פתח דפדפן וגש ל: `http://localhost:3000`
+
+אמור לראות: "שלום עולם! השרת עובד!"
+
+> 💡 כדי לעצור את השרת, לחץ Ctrl+C בטרמינל
+
+## שלב 3: תרגיל - הוסף עוד נתיבים
+
+עכשיו תכתוב קובץ `exercise-01-express-setup.js` שמכיל:
+
+### דרישות:
+
+1. **שרת Express בסיסי** שרץ על פורט 3000
+
+2. **נתיב ראשי** - `GET /`
+   - מחזיר: `{ "message": "ברוכים הבאים ל-API של אימות משתמשים" }`
+
+3. **נתיב בריאות** - `GET /health`
+   - מחזיר: `{ "status": "OK", "timestamp": "2026-01-05T10:30:00.000Z" }`
+
+4. **נתיב מידע** - `GET /api/info`
+   - מחזיר: `{ "name": "Auth API", "version": "1.0.0", "author": "השם שלך" }`
+
+## פלט צפוי
+
+כשמריצים את השרת:
+```
+השרת רץ על http://localhost:3000
+```
+
+כשניגשים ל-`http://localhost:3000/`:
 ```json
 {
-  "message": "Welcome to the Authentication API"
+  "message": "ברוכים הבאים ל-API של אימות משתמשים"
 }
 ```
 
-When you visit `http://localhost:3000/health`:
+כשניגשים ל-`http://localhost:3000/health`:
 ```json
 {
   "status": "OK",
-  "timestamp": "2024-01-05T10:30:00.000Z"
+  "timestamp": "2026-01-05T10:30:00.000Z"
 }
 ```
 
-## Tips
+כשניגשים ל-`http://localhost:3000/api/info`:
+```json
+{
+  "name": "Auth API",
+  "version": "1.0.0",
+  "author": "השם שלך"
+}
+```
 
-- Use `app.use(express.json())` for parsing JSON bodies
-- Use `app.use(express.urlencoded({ extended: true }))` for form data
-- Error handling middleware should be the last middleware added
-- Remember to use `res.json()` to send JSON responses
+## טיפים 💡
 
-## Bonus Challenges
+### איך להחזיר JSON?
+```javascript
+res.json({ message: "זה אובייקט JSON" });
+```
 
-1. Add a logger middleware that logs each request (method, URL, timestamp)
-2. Create a custom 404 handler for unknown routes
-3. Add environment variables using dotenv for the port number
+### איך לקבל תאריך נוכחי?
+```javascript
+const now = new Date().toISOString();
+```
+
+### מבנה נתיב בסיסי:
+```javascript
+app.get('/הנתיב', function(req, res) {
+  res.json({ מה שרוצים להחזיר });
+});
+```
+
+## מילון מושגים:
+
+- **Express** - ספרייה לבניית שרתים
+- **Route (נתיב)** - כתובת בשרת (כמו `/about`, `/users`)
+- **GET** - סוג בקשה לקבלת מידע
+- **req** - Request (הבקשה שהגיעה)
+- **res** - Response (התשובה שנחזיר)
+- **Port** - "שער" בשרת (3000, 8080, וכו')
+- **localhost** - המחשב שלך (127.0.0.1)
+
+## איך לבדוק את השרת?
+
+### דרך 1: דפדפן
+פשוט פתח `http://localhost:3000` בדפדפן
+
+### דרך 2: Postman
+הורד Postman (תוכנה לבדיקת API) ושלח בקשות GET
+
+### דרך 3: VSCode Extension
+התקן את התוסף "Thunder Client" ב-VSCode
+
+## אתגרי בונוס 🌟
+
+1. הוסף נתיב `GET /time` שמחזיר את השעה הנוכחית
+2. הוסף נתיב `GET /about` עם מידע אישי עליך
+3. הוסף הודעת לוג לכל בקשה שמגיעה לשרת
+4. נסה לשנות את הפורט ל-8080
+
+## המשך ל-Exercise 02 ←
