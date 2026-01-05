@@ -16,16 +16,15 @@ Create a `Car` class with regular methods and static methods.
 class Car {
     // Add constructor that receives: brand, model, year
     constructor(brand, model, year) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.mileage = 0; // Starts at 0
+        // Initialize brand, model, year properties
+        // Set mileage to 0
+        // Hint: this.propertyName = parameterValue
     }
     
     // Add method drive that receives kilometers and adds them to mileage
     drive(kilometers) {
-        // Write your code here
-        console.log(`Car drove ${kilometers} km. Total mileage: ${this.mileage} km`);
+        // Hint: Add kilometers to this.mileage
+        // Then console.log with template string
     }
     
     // Add method getAge that returns car age (2026 - year)
@@ -35,18 +34,15 @@ class Car {
     
     // Add method getCarInfo that returns string with all car details
     getCarInfo() {
-        return `${this.brand} ${this.model} (${this.year}) - ${this.mileage} km`;
+        // Hint: Return template string with brand, model, year, mileage
+        // Format: "Brand Model (Year) - Mileage km"
     }
     
     // Static method - compare two cars by mileage
     static compare(car1, car2) {
-        if (car1.mileage > car2.mileage) {
-            return `${car1.brand} ${car1.model} has driven more`;
-        } else if (car2.mileage > car1.mileage) {
-            return `${car2.brand} ${car2.model} has driven more`;
-        } else {
-            return "Both cars have driven the same distance";
-        }
+        // Hint: Compare car1.mileage with car2.mileage
+        // Return appropriate message based on comparison
+        // Use if-else if-else structure
     }
 }
 ```
@@ -100,8 +96,8 @@ class Temperature {
     
     // Static method - fromKelvin creates Temperature object from Kelvin
     static fromKelvin(kelvin) {
-        // Write your code here
-        // Create and return new Temperature object
+        // Hint: Calculate celsius from kelvin (kelvin - 273.15)
+        // Then return new Temperature(celsius)
     }
 }
 ```

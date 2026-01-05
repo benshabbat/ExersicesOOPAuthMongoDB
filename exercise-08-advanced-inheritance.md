@@ -32,102 +32,91 @@ class Employee {
     static totalEmployees = 0;
     
     constructor(firstName, lastName, employeeId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.employeeId = employeeId;
-        this.hireDate = new Date();
-        Employee.totalEmployees++;
+        // Initialize firstName, lastName, employeeId
+        // Set hireDate to new Date()
+        // Increment Employee.totalEmployees
     }
     
     getFullName() {
-        return `${this.firstName} ${this.lastName}`;
+        // Hint: Return firstName + space + lastName
     }
     
     getYearsOfService() {
-        const now = new Date();
-        const years = now.getFullYear() - this.hireDate.getFullYear();
-        return years;
+        // Hint: Calculate years between now and hireDate
+        // Use: now.getFullYear() - this.hireDate.getFullYear()
     }
     
     getInfo() {
-        return `Employee: ${this.getFullName()}, ID: ${this.employeeId}`;
+        // Hint: Return string with name and employee ID
     }
     
     work() {
-        console.log(`${this.getFullName()} is working`);
+        // Hint: console.log that employee is working
     }
 }
 
 class FullTimeEmployee extends Employee {
     constructor(firstName, lastName, employeeId, monthlySalary) {
-        super(firstName, lastName, employeeId);
-        this.monthlySalary = monthlySalary;
+        // Call super with parent parameters
+        // Initialize monthlySalary
     }
     
     getAnnualSalary() {
-        return this.monthlySalary * 12;
+        // Hint: Multiply monthlySalary by 12
     }
     
     getInfo() {
-        return `${super.getInfo()}, Full-time, Monthly salary: ₪${this.monthlySalary}`;
+        // Hint: Use super.getInfo() and add salary information
     }
 }
 
 class Manager extends FullTimeEmployee {
     constructor(firstName, lastName, employeeId, monthlySalary, department) {
-        super(firstName, lastName, employeeId, monthlySalary);
-        this.department = department;
-        this.teamMembers = [];
+        // Call super with FullTimeEmployee parameters
+        // Initialize department and empty teamMembers array
     }
     
     addTeamMember(employee) {
-        this.teamMembers.push(employee);
-        console.log(`${employee.getFullName()} added to ${this.getFullName()}'s team`);
+        // Hint: Push employee to teamMembers array
+        // console.log success message
     }
     
     removeTeamMember(employeeId) {
-        const index = this.teamMembers.findIndex(emp => emp.employeeId === employeeId);
-        if (index !== -1) {
-            const removed = this.teamMembers.splice(index, 1)[0];
-            console.log(`${removed.getFullName()} removed from team`);
-            return true;
-        }
-        return false;
+        // Hint: Use findIndex to find employee
+        // Use splice to remove if found
+        // Return true/false based on success
     }
     
     getTeamSize() {
-        return this.teamMembers.length;
+        // Hint: Return length of teamMembers array
     }
     
     work() {
-        console.log(`${this.getFullName()} manages the ${this.department} department with ${this.getTeamSize()} employees`);
+        // Hint: Override work method
+        // Show manager managing department with team size
     }
     
     getInfo() {
-        return `Manager: ${this.getFullName()}, Department: ${this.department}, Team members: ${this.getTeamSize()}`;
+        // Hint: Return manager info with department and team size
     }
 }
 
 class PartTimeEmployee extends Employee {
     constructor(firstName, lastName, employeeId, hourlyRate, hoursPerWeek) {
-        // Write your code here
-        super(firstName, lastName, employeeId);
-        this.hourlyRate = hourlyRate;
-        this.hoursPerWeek = hoursPerWeek;
+        // Hint: Call super with Employee parameters
+        // Initialize hourlyRate and hoursPerWeek
     }
     
     getWeeklySalary() {
-        // Write your code here
-        return this.hourlyRate * this.hoursPerWeek;
+        // Hint: Multiply hourlyRate by hoursPerWeek
     }
     
     getMonthlySalary() {
-        // Approximate monthly salary (4 weeks)
-        return this.getWeeklySalary() * 4;
+        // Hint: Multiply weekly salary by 4
     }
     
     getInfo() {
-        return `${super.getInfo()}, Part-time, ${this.hoursPerWeek} hours/week, ₪${this.hourlyRate}/hour`;
+        // Hint: Use super.getInfo() and add part-time info
     }
 }
 
@@ -175,63 +164,44 @@ Character (base)
 ```javascript
 class Character {
     constructor(name, level = 1) {
-        this.name = name;
-        this.level = level;
-        this.health = 100;
-        this.maxHealth = 100;
-        this.isAlive = true;
+        // Initialize name, level
+        // Set health = 100, maxHealth = 100
+        // Set isAlive = true
     }
     
     takeDamage(damage) {
-        if (!this.isAlive) {
-            console.log(`${this.name} is already dead`);
-            return;
-        }
-        
-        this.health -= damage;
-        console.log(`${this.name} took ${damage} damage. Health: ${this.health}/${this.maxHealth}`);
-        
-        if (this.health <= 0) {
-            this.health = 0;
-            this.isAlive = false;
-            console.log(`💀 ${this.name} died!`);
-        }
+        // Hint: Check if character is alive
+        // Subtract damage from health
+        // console.log damage taken
+        // If health <= 0, set isAlive to false
     }
     
     heal(amount) {
-        if (!this.isAlive) {
-            console.log(`${this.name} is dead, cannot heal`);
-            return;
-        }
-        
-        this.health = Math.min(this.health + amount, this.maxHealth);
-        console.log(`${this.name} healed by ${amount}. Health: ${this.health}/${this.maxHealth}`);
+        // Hint: Check if character is alive
+        // Add amount to health (don't exceed maxHealth)
+        // Use Math.min(this.health + amount, this.maxHealth)
     }
     
     levelUp() {
-        this.level++;
-        this.maxHealth += 20;
-        this.health = this.maxHealth;
-        console.log(`🎉 ${this.name} leveled up to ${this.level}!`);
+        // Hint: Increment level
+        // Increase maxHealth by 20
+        // Set health to maxHealth
+        // console.log level up message
     }
 }
 
 class Warrior extends Character {
     constructor(name, level = 1) {
-        super(name, level);
-        this.strength = 10;
-        this.armor = 5;
+        // Call super with name and level
+        // Initialize strength = 10
+        // Initialize armor = 5
     }
     
     attack(target) {
-        if (!this.isAlive) {
-            console.log(`${this.name} is dead and cannot attack`);
-            return;
-        }
-        
-        const damage = this.strength * this.level;
-        console.log(`⚔️ ${this.name} attacks ${target.name}!`);
-        target.takeDamage(damage);
+        // Hint: Check if this character is alive
+        // Calculate damage = strength * level
+        // console.log attack message
+        // Call target.takeDamage(damage)
     }
     
     defend() {
@@ -254,70 +224,46 @@ class Warrior extends Character {
 
 class Mage extends Character {
     constructor(name, level = 1) {
-        super(name, level);
-        this.mana = 50;
-        this.maxMana = 50;
-        this.spellPower = 15;
+        // Hint: Call super, then initialize mana, maxMana, spellPower
     }
     
     castSpell(target, manaCost = 10) {
-        if (!this.isAlive) {
-            console.log(`${this.name} is dead and cannot cast spells`);
-            return;
-        }
-        
-        if (this.mana < manaCost) {
-            console.log(`❌ ${this.name} not enough mana (${this.mana}/${manaCost})`);
-            return;
-        }
-        
-        this.mana -= manaCost;
-        const damage = this.spellPower * this.level;
-        console.log(`✨ ${this.name} casts a spell on ${target.name}! (Mana: ${this.mana}/${this.maxMana})`);
-        target.takeDamage(damage);
+        // Hint: Check if character is alive
+        // Check if mana >= manaCost
+        // Subtract mana, calculate damage (spellPower * level)
+        // console.log spell cast message
+        // Call target.takeDamage(damage)
     }
     
     meditate() {
-        this.mana = Math.min(this.mana + 20, this.maxMana);
-        console.log(`🧘 ${this.name} meditates. Mana: ${this.mana}/${this.maxMana}`);
+        // Hint: Increase mana by 20, but don't exceed maxMana
+        // Use Math.min(this.mana + 20, this.maxMana)
+        // console.log meditation message
     }
     
     levelUp() {
-        super.levelUp();
-        this.maxMana += 10;
-        this.mana = this.maxMana;
-        this.spellPower += 5;
-        console.log(`Spell power: ${this.spellPower}, Max mana: ${this.maxMana}`);
+        // Hint: Call super.levelUp()
+        // Increase maxMana, restore mana, increase spellPower
+        // console.log stats
     }
 }
 
 class Healer extends Mage {
     constructor(name, level = 1) {
-        super(name, level);
-        this.healingPower = 20;
+        // Hint: Call super, then initialize healingPower
     }
     
     healAlly(target) {
-        if (!this.isAlive) {
-            console.log(`${this.name} is dead and cannot heal`);
-            return;
-        }
-        
-        if (this.mana < 15) {
-            console.log(`❌ ${this.name} not enough mana for healing`);
-            return;
-        }
-        
-        this.mana -= 15;
-        const healAmount = this.healingPower * this.level;
-        console.log(`💚 ${this.name} heals ${target.name}`);
-        target.heal(healAmount);
+        // Hint: Check if alive and has enough mana (15)
+        // Subtract mana, calculate healAmount (healingPower * level)
+        // console.log healing message
+        // Call target.heal(healAmount)
     }
     
     levelUp() {
-        super.levelUp();
-        this.healingPower += 5;
-        console.log(`Healing power: ${this.healingPower}`);
+        // Hint: Call super.levelUp()
+        // Increase healingPower
+        // console.log stats
     }
 }
 

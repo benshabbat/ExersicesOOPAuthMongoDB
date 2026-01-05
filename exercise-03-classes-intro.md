@@ -60,12 +60,9 @@ class BankAccount {
     
     // Add method deposit that adds amount to balance
     deposit(amount) {
-        if (amount > 0) {
-            // Add amount to balance
-            console.log(`Deposited ${amount}. New balance: ${this.balance}`);
-        } else {
-            console.log("Error: Amount must be positive");
-        }
+        // Hint: Check if amount > 0
+        // If yes: add to balance and show success message
+        // If no: show error message
     }
     
     // Add method withdraw that subtracts amount from balance
@@ -81,7 +78,8 @@ class BankAccount {
     
     // Add method getAccountInfo that prints account details
     getAccountInfo() {
-        console.log(`Account owner: ${this.ownerName}, Balance: ${this.balance}`);
+        // Hint: Use console.log with template string
+        // Show owner name and balance
     }
 }
 ```

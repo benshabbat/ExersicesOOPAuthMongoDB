@@ -162,10 +162,9 @@ class StudentGrade {
     
     // Add method getAverage that returns average of grades
     getAverage() {
-        if (this.grades.length === 0) return 0;
-        // Calculate average
-        // Hint: sum of all grades divided by number of grades
-        // Write your code here
+        // Hint: Check if grades array is empty, return 0
+        // Calculate sum of all grades (use reduce or loop)
+        // Divide by number of grades
     }
     
     // Add method getHighestGrade that returns highest grade

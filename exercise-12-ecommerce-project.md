@@ -46,55 +46,51 @@ class Product {
     #stock;
     
     constructor(name, price, stock, category) {
-        this.id = `PROD-${Product.nextId++}`;
-        this.name = name;
-        this.#price = price;
-        this.#stock = stock;
-        this.category = category;
-        this.reviews = [];
+        // Create unique ID: `PROD-${Product.nextId++}`
+        // Initialize name, category
+        // Set #price and #stock (private fields)
+        // Initialize reviews = []
     }
     
     get price() {
-        return this.#price;
+        // Hint: Return this.#price
     }
     
     set price(newPrice) {
-        if (newPrice < 0) {
-            console.log("❌ מחיר לא יכול להיות שלילי");
-            return;
-        }
-        this.#price = newPrice;
+        // Hint: Validate newPrice >= 0
+        // If invalid, show error and return
+        // Set this.#price = newPrice
     }
     
     get stock() {
-        return this.#stock;
+        // Hint: Return this.#stock
     }
     
     addStock(quantity) {
-        if (quantity <= 0) return false;
-        this.#stock += quantity;
-        console.log(`📦 נוספו ${quantity} יחידות של ${this.name}. מלאי: ${this.#stock}`);
-        return true;
+        // Hint: Check quantity > 0
+        // Add to #stock
+        // console.log message
+        // Return true/false
     }
     
     reduceStock(quantity) {
-        if (quantity > this.#stock) {
-            console.log(`❌ אין מספיק ${this.name} במלאי`);
-            return false;
-        }
-        this.#stock -= quantity;
-        return true;
+        // Hint: Check if quantity <= #stock
+        // If not enough, show error and return false
+        // Subtract from #stock
+        // Return true
     }
     
     addReview(rating, comment, userName) {
-        this.reviews.push({ rating, comment, userName, date: new Date() });
-        console.log(`⭐ ביקורת נוספה על ${this.name}`);
+        // Hint: Push object to reviews array
+        // Object: { rating, comment, userName, date: new Date() }
+        // console.log success message
     }
     
     getAverageRating() {
-        if (this.reviews.length === 0) return 0;
-        const sum = this.reviews.reduce((acc, review) => acc + review.rating, 0);
-        return (sum / this.reviews.length).toFixed(1);
+        // Hint: If no reviews, return 0
+        // Use reduce to sum all ratings
+        // Divide by reviews.length
+        // Return with .toFixed(1)
     }
     
     getInfo() {
@@ -120,59 +116,37 @@ class ShoppingCart {
     }
     
     addItem(product, quantity = 1) {
-        // Check if product already in cart
-        const existingItem = this.items.find(item => item.product.id === product.id);
-        
-        if (existingItem) {
-            existingItem.quantity += quantity;
-            console.log(`✅ עודכן ${product.name} בעגלה (${existingItem.quantity})`);
-        } else {
-            this.items.push({ product, quantity });
-            console.log(`✅ ${product.name} נוסף לעגלה`);
-        }
+        // Hint: Check if product already exists in cart using find
+        // If exists, update quantity
+        // If not, push new object { product, quantity } to items
+        // console.log success message
     }
     
     removeItem(productId) {
-        const index = this.items.findIndex(item => item.product.id === productId);
-        if (index !== -1) {
-            const removed = this.items.splice(index, 1)[0];
-            console.log(`🗑️ ${removed.product.name} הוסר מהעגלה`);
-            return true;
-        }
-        return false;
+        // Hint: Use findIndex to locate item
+        // If found, use splice to remove
+        // console.log success message and return true
     }
     
     updateQuantity(productId, newQuantity) {
-        const item = this.items.find(item => item.product.id === productId);
-        if (item) {
-            item.quantity = newQuantity;
-            console.log(`🔄 כמות ${item.product.name} עודכנה ל-${newQuantity}`);
-            return true;
-        }
-        return false;
+        // Hint: Use find to locate item
+        // Update item.quantity to newQuantity
+        // console.log message and return true/false
     }
     
     getTotal() {
-        return this.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+        // Hint: Use reduce to sum (product.price * quantity) for all items
     }
     
     clear() {
-        this.items = [];
-        console.log("🗑️ העגלה רוקנה");
+        // Hint: Set this.items to empty array
+        // console.log message
     }
     
     displayCart() {
-        if (this.items.length === 0) {
-            console.log("🛒 העגלה ריקה");
-            return;
-        }
-        
-        console.log("\n🛒 העגלה שלי:");
-        this.items.forEach((item, index) => {
-            const subtotal = item.product.price * item.quantity;
-            console.log(`${index + 1}. ${item.product.name} x${item.quantity} = ₪${subtotal}`);
-        });
-        console.log(`\nסה"כ: ₪${this.getTotal()}`);
+        // Hint: Check if items.length === 0, print empty cart message
+        // Use forEach to iterate and print each item with subtotal
+        // Print total at the end using getTotal()
     }
 }
 ```
@@ -201,39 +175,26 @@ class Order {
     }
     
     calculateTotal() {
-        return this.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+        // Hint: Use reduce to sum (product.price * quantity) for all items
     }
     
     updateStatus(newStatus) {
-        this.status = newStatus;
-        console.log(`📦 הזמנה #${this.orderNumber} עודכנה: ${this.getStatusText()}`);
+        // Hint: Set this.status to newStatus
+        // console.log message with order number and status
     }
     
     getStatusText() {
-        const statusMap = {
-            pending: "ממתינה לאישור",
-            processing: "בעיבוד",
-            shipped: "נשלחה",
-            delivered: "נמסרה",
-            cancelled: "בוטלה"
-        };
-        return statusMap[this.status] || this.status;
+        // Hint: Create statusMap object with Hebrew translations
+        // Return statusMap[this.status] or this.status as fallback
     }
     
     getOrderInfo() {
-        return `📋 הזמנה #${this.orderNumber}
-   לקוח: ${this.customer.name}
-   תאריך: ${this.orderDate.toLocaleDateString("he-IL")}
-   סטטוס: ${this.getStatusText()}
-   סה"כ: ₪${this.total}`;
+        // Hint: Return template string with order number, customer name, date, status, total
     }
     
     displayOrder() {
-        console.log(`\n${this.getOrderInfo()}`);
-        console.log("פריטים:");
-        this.items.forEach((item, index) => {
-            console.log(`  ${index + 1}. ${item.product.name} x${item.quantity} - ₪${item.product.price * item.quantity}`);
-        });
+        // Hint: console.log getOrderInfo()
+        // Use forEach to print all items with quantity and subtotal
     }
 }
 ```
@@ -275,51 +236,26 @@ class Customer {
     }
     
     addAddress(street, city, zipCode) {
-        this.addresses.push({ street, city, zipCode });
-        console.log(`📍 כתובת חדשה נוספה`);
+        // Hint: Push object with street, city, zipCode to this.addresses
+        // console.log success message
     }
     
     placeOrder(store) {
-        if (this.cart.items.length === 0) {
-            console.log("❌ העגלה ריקה");
-            return null;
-        }
-        
-        // Check stock availability
-        for (const item of this.cart.items) {
-            if (item.product.stock < item.quantity) {
-                console.log(`❌ אין מספיק ${item.product.name} במלאי`);
-                return null;
-            }
-        }
-        
-        // Create order
-        const order = new Order(this, this.cart.items);
-        this.orders.push(order);
-        store.addOrder(order);
-        
-        // Reduce stock
-        for (const item of this.cart.items) {
-            item.product.reduceStock(item.quantity);
-        }
-        
+        // Hint: Check if cart is empty, return null if so
+        // Loop through cart items to check stock availability
+        // Create new Order with this and cart.items
+        // Add order to this.orders and store.addOrder()
+        // Reduce stock for each product (use reduceStock)
         // Clear cart
-        this.cart.clear();
-        
-        console.log(`✅ הזמנה #${order.orderNumber} בוצעה בהצלחה!`);
-        return order;
+        // console.log success message and return order
     }
     
     getOrderHistory() {
-        return this.orders;
+        // Hint: Return this.orders
     }
     
     getCustomerInfo() {
-        return `👤 לקוח #${this.customerId}: ${this.name}
-   אימייל: ${this.email}
-   טלפון: ${this.phoneNumber}
-   הזמנות: ${this.orders.length}
-   תאריך הרשמה: ${this.registrationDate.toLocaleDateString("he-IL")}`;
+        // Hint: Return template string with customer ID, name, email, phone, orders count, registration date
     }
 }
 ```
@@ -343,94 +279,58 @@ class Store {
     }
     
     addProduct(product) {
-        this.products.push(product);
-        console.log(`➕ ${product.name} נוסף לחנות`);
+        // Hint: Push product to this.products
+        // console.log success message
     }
     
     removeProduct(productId) {
-        const index = this.products.findIndex(p => p.id === productId);
-        if (index !== -1) {
-            const removed = this.products.splice(index, 1)[0];
-            console.log(`➖ ${removed.name} הוסר מהחנות`);
-            return true;
-        }
-        return false;
+        // Hint: Use findIndex and splice
+        // Return true/false
     }
     
     registerCustomer(name, email, password, phoneNumber) {
-        const customer = new Customer(name, email, password, phoneNumber);
-        this.customers.push(customer);
-        console.log(`✅ ${name} נרשם לחנות. מזהה לקוח: ${customer.customerId}`);
-        return customer;
+        // Hint: Create new Customer
+        // Push to this.customers
+        // console.log success message with customer ID
+        // Return customer
     }
     
     findProduct(productId) {
-        return this.products.find(p => p.id === productId);
+        // Hint: Use this.products.find()
     }
     
     findCustomer(customerId) {
-        return this.customers.find(c => c.customerId === customerId);
+        // Hint: Use this.customers.find()
     }
     
     searchProducts(searchTerm) {
-        return this.products.filter(p => 
-            p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            p.category.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        // Hint: Use filter with name or category includes searchTerm
     }
     
     getProductsByCategory(category) {
-        return this.products.filter(p => p.category === category);
+        // Hint: Use filter where product.category === category
     }
     
     addOrder(order) {
-        this.orders.push(order);
+        // Hint: Push order to this.orders
     }
     
     getStatistics() {
-        const totalProducts = this.products.length;
-        const totalCustomers = this.customers.length;
-        const totalOrders = this.orders.length;
-        const totalRevenue = this.orders.reduce((sum, order) => sum + order.total, 0);
-        
-        const pendingOrders = this.orders.filter(o => o.status === "pending").length;
-        const shippedOrders = this.orders.filter(o => o.status === "shipped").length;
-        const deliveredOrders = this.orders.filter(o => o.status === "delivered").length;
-        
-        return {
-            totalProducts,
-            totalCustomers,
-            totalOrders,
-            totalRevenue,
-            pendingOrders,
-            shippedOrders,
-            deliveredOrders
-        };
+        // Hint: Count products, customers, orders
+        // Calculate total revenue using reduce on orders
+        // Count orders by status using filter
+        // Return object with all statistics
     }
     
     displayStatistics() {
-        console.log(`\n${"=".repeat(50)}`);
-        console.log(`🏪 ${this.name} - סטטיסטיקות`);
-        console.log(`${"=".repeat(50)}`);
-        
-        const stats = this.getStatistics();
-        console.log(`\nכללי:`);
-        console.log(`  • מוצרים בחנות: ${stats.totalProducts}`);
-        console.log(`  • לקוחות רשומים: ${stats.totalCustomers}`);
-        console.log(`  • סה"כ הזמנות: ${stats.totalOrders}`);
-        console.log(`  • סה"כ הכנסות: ₪${stats.totalRevenue}`);
-        
-        console.log(`\nהזמנות לפי סטטוס:`);
-        console.log(`  • ממתינות: ${stats.pendingOrders}`);
-        console.log(`  • נשלחו: ${stats.shippedOrders}`);
-        console.log(`  • נמסרו: ${stats.deliveredOrders}`);
+        // Hint: console.log header with store name
+        // Get statistics using getStatistics()
+        // Print all stats in formatted way
     }
     
     listProducts() {
-        console.log(`\n--- מוצרים בחנות ---`);
-        this.products.forEach((product, index) => {
-            console.log(`${index + 1}. ${product.getInfo()}`);
-        });
+        // Hint: console.log header
+        // Use forEach to print each product with index
     }
 }
 ```

@@ -91,36 +91,28 @@ class PayPalPayment extends Payment {
 
 class CashPayment extends Payment {
     constructor(amount, description) {
-        super(amount, description);
-        this.paymentMethod = "מזומן";
+        // Hint: Call super with amount and description
+        // Set paymentMethod to "מזומן"
     }
     
     // Override process
     process() {
-        // Write your code here
-        // Print appropriate message for cash payment 💵
-        console.log(`💵 Receiving cash payment`);
-        console.log(`   Amount: ₪${this.amount}`);
-        console.log(`   ✅ Payment completed!`);
-        this.status = "completed";
+        // Hint: console.log cash payment messages 💵
+        // Show amount
+        // Set status to "completed"
     }
 }
 
 class BitcoinPayment extends Payment {
     constructor(amount, description, walletAddress) {
-        // Write your code here
-        super(amount, description);
-        this.walletAddress = walletAddress;
-        this.paymentMethod = "Bitcoin";
+        // Hint: Call super with amount and description
+        // Initialize walletAddress and paymentMethod
     }
     
     process() {
-        console.log(`₿ Processing Bitcoin payment`);
-        console.log(`   Wallet: ${this.walletAddress}`);
-        console.log(`   Amount: ₪${this.amount}`);
-        console.log(`   Waiting for blockchain confirmation...`);
-        console.log(`   ✅ Payment verified!`);
-        this.status = "completed";
+        // Hint: console.log Bitcoin payment messages ₿
+        // Show wallet, amount, blockchain confirmation
+        // Set status to "completed"
     }
 }
 
@@ -195,48 +187,39 @@ class Circle extends Shape {
 
 class Rectangle extends Shape {
     constructor(color, width, height) {
-        super(color);
-        this.width = width;
-        this.height = height;
+        // Hint: Call super with color
+        // Initialize width and height
     }
     
     getArea() {
-        // Write your code here
-        return this.width * this.height;
+        // Hint: Return width * height
     }
     
     getPerimeter() {
-        // Write your code here
-        return 2 * (this.width + this.height);
+        // Hint: Return 2 * (width + height)
     }
     
     describe() {
-        console.log(`▭ ${this.color} rectangle, ${this.width}x${this.height}`);
+        // Hint: console.log rectangle info with color and dimensions
     }
 }
 
 class Triangle extends Shape {
     constructor(color, base, height, side1, side2, side3) {
-        super(color);
-        this.base = base;
-        this.height = height;
-        this.side1 = side1;
-        this.side2 = side2;
-        this.side3 = side3;
+        // Hint: Call super with color
+        // Initialize base, height, and all three sides
     }
     
     getArea() {
-        // Triangle area = (base * height) / 2
-        return (this.base * this.height) / 2;
+        // Hint: Triangle area formula: (base * height) / 2
     }
     
     getPerimeter() {
-        // Triangle perimeter = sum of all sides
-        return this.side1 + this.side2 + this.side3;
+        // Hint: Sum all three sides
     }
     
     describe() {
-        console.log(`△ ${this.color} triangle, Base: ${this.base}`);
+        // Hint: console.log triangle info
     }
 }
 
@@ -305,33 +288,27 @@ class EmailNotification extends Notification {
 
 class SMSNotification extends Notification {
     constructor(message, recipient, phoneNumber) {
-        super(message, recipient);
-        this.phoneNumber = phoneNumber;
+        // Hint: Call super with message and recipient
+        // Initialize phoneNumber
     }
     
     send() {
-        // Write your code here
-        // Send SMS 📱
-        console.log(`📱 Sending SMS`);
-        console.log(`   To: ${this.phoneNumber}`);
-        console.log(`   Message: ${this.message}`);
-        console.log(`   ✅ SMS sent!`);
-        this.sent = true;
+        // Hint: console.log SMS sending messages 📱
+        // Show phone number and message
+        // Set sent to true
     }
 }
 
 class PushNotification extends Notification {
     constructor(message, recipient, deviceId) {
-        super(message, recipient);
-        this.deviceId = deviceId;
+        // Hint: Call super with message and recipient
+        // Initialize deviceId
     }
     
     send() {
-        console.log(`📲 Sending push notification`);
-        console.log(`   Device: ${this.deviceId}`);
-        console.log(`   Message: ${this.message}`);
-        console.log(`   ✅ Notification sent!`);
-        this.sent = true;
+        // Hint: console.log push notification messages 📲
+        // Show device and message
+        // Set sent to true
     }
 }
 

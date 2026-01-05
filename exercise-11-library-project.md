@@ -43,43 +43,32 @@ class LibraryItem {
     static nextId = 1;
     
     constructor(title, year) {
-        this.id = `ITEM-${LibraryItem.nextId++}`;
-        this.title = title;
-        this.year = year;
-        this.isAvailable = true;
-        this.borrowedBy = null;
-        this.borrowDate = null;
+        // Create unique ID: `ITEM-${LibraryItem.nextId++}`
+        // Initialize title, year
+        // Set isAvailable = true
+        // Set borrowedBy = null, borrowDate = null
     }
     
     getInfo() {
-        return `[${this.id}] ${this.title} (${this.year})`;
+        // Hint: Return string with ID, title, and year
+        // Format: "[ID] Title (Year)"
     }
     
     borrow(memberName) {
-        if (!this.isAvailable) {
-            console.log(`❌ ${this.title} כבר מושאל`);
-            return false;
-        }
-        
-        this.isAvailable = false;
-        this.borrowedBy = memberName;
-        this.borrowDate = new Date();
-        console.log(`✅ ${memberName} שאל את ${this.title}`);
-        return true;
+        // Hint: Check if item is available
+        // If not available, show error and return false
+        // Set isAvailable = false
+        // Set borrowedBy and borrowDate
+        // console.log success message
+        // Return true
     }
     
     return() {
-        if (this.isAvailable) {
-            console.log(`❌ ${this.title} לא מושאל כרגע`);
-            return false;
-        }
-        
-        const borrower = this.borrowedBy;
-        this.isAvailable = true;
-        this.borrowedBy = null;
-        this.borrowDate = null;
-        console.log(`✅ ${borrower} החזיר את ${this.title}`);
-        return true;
+        // Hint: Check if item is currently borrowed
+        // If available, show error and return false
+        // Reset: isAvailable = true, borrowedBy = null, borrowDate = null
+        // console.log return message
+        // Return true
     }
 }
 ```
@@ -89,15 +78,15 @@ class LibraryItem {
 ```javascript
 class Book extends LibraryItem {
     constructor(title, author, year, pages, genre) {
-        super(title, year);
-        this.author = author;
-        this.pages = pages;
-        this.genre = genre;
-        this.type = "ספר";
+        // Call super with title and year
+        // Initialize author, pages, genre
+        // Set type = "Book"
     }
     
     getInfo() {
-        return `📖 ${super.getInfo()}\n   מחבר: ${this.author}, ז'אנר: ${this.genre}, עמודים: ${this.pages}`;
+        // Hint: Use super.getInfo() and add book-specific info
+        // Include author, genre, and pages
+    }
     }
 }
 ```
@@ -107,15 +96,12 @@ class Book extends LibraryItem {
 ```javascript
 class Magazine extends LibraryItem {
     constructor(title, year, issueNumber, month) {
-        // Write your code here
-        super(title, year);
-        this.issueNumber = issueNumber;
-        this.month = month;
-        this.type = "כתב עת";
+        // Hint: Call super with title and year
+        // Initialize issueNumber, month, and type
     }
     
     getInfo() {
-        return `📰 ${super.getInfo()}\n   גיליון: ${this.issueNumber}, חודש: ${this.month}`;
+        // Hint: Use super.getInfo() and add magazine-specific info
     }
 }
 ```
@@ -125,16 +111,12 @@ class Magazine extends LibraryItem {
 ```javascript
 class DVD extends LibraryItem {
     constructor(title, director, year, duration, genre) {
-        // Write your code here
-        super(title, year);
-        this.director = director;
-        this.duration = duration; // in minutes
-        this.genre = genre;
-        this.type = "DVD";
+        // Hint: Call super with title and year
+        // Initialize director, duration, genre, and type
     }
     
     getInfo() {
-        return `📀 ${super.getInfo()}\n   במאי: ${this.director}, ז'אנר: ${this.genre}, משך: ${this.duration} דקות`;
+        // Hint: Use super.getInfo() and add DVD-specific info
     }
 }
 ```
@@ -167,38 +149,26 @@ class Member {
     }
     
     borrowItem(item) {
-        if (this.borrowedItems.length >= 3) {
-            console.log(`❌ ${this.name} כבר שאל 3 פריטים (מקסימום)`);
-            return false;
-        }
-        
-        if (item.borrow(this.name)) {
-            this.borrowedItems.push(item);
-            return true;
-        }
-        return false;
+        // Hint: Check if borrowedItems.length >= 3
+        // If yes, show error and return false
+        // Try to call item.borrow(this.name)
+        // If successful, push item to borrowedItems and return true
     }
     
     returnItem(item) {
-        const index = this.borrowedItems.findIndex(i => i.id === item.id);
-        if (index === -1) {
-            console.log(`❌ ${this.name} לא שאל את ${item.title}`);
-            return false;
-        }
-        
-        if (item.return()) {
-            this.borrowedItems.splice(index, 1);
-            return true;
-        }
-        return false;
+        // Hint: Use findIndex to locate item in borrowedItems
+        // If not found, show error and return false
+        // Call item.return()
+        // If successful, use splice to remove from borrowedItems
     }
     
     getBorrowedItems() {
-        return this.borrowedItems;
+        // Hint: Return this.borrowedItems
     }
     
     getMemberInfo() {
-        return `👤 חבר מספר ${this.#memberId}: ${this.name}\n   אימייל: ${this.email}, טלפון: ${this.phoneNumber}\n   פריטים מושאלים: ${this.borrowedItems.length}/3`;
+        // Hint: Return string with member number, name, email, phone
+        // Include borrowed items count (length/3)
     }
 }
 ```
@@ -222,87 +192,62 @@ class Library {
     
     // Add item to library
     addItem(item) {
-        this.items.push(item);
-        console.log(`➕ ${item.title} נוסף לספריה`);
+        // Hint: Push item to this.items
+        // console.log success message
     }
     
     // Remove item from library
     removeItem(itemId) {
-        const index = this.items.findIndex(item => item.id === itemId);
-        if (index !== -1) {
-            const removed = this.items.splice(index, 1)[0];
-            console.log(`➖ ${removed.title} הוסר מהספריה`);
-            return true;
-        }
-        console.log(`❌ פריט לא נמצא`);
-        return false;
+        // Hint: Use findIndex to locate item
+        // If found, use splice to remove and console.log
+        // Return true/false
     }
     
     // Register new member
     registerMember(name, email, phoneNumber) {
-        const member = new Member(name, email, phoneNumber);
-        this.members.push(member);
-        console.log(`✅ ${name} נרשם לספריה. מספר חבר: ${member.memberId}`);
-        return member;
+        // Hint: Create new Member
+        // Push to this.members
+        // console.log success message with member ID
+        // Return the member
     }
     
     // Find member by ID
     findMember(memberId) {
-        return this.members.find(member => member.memberId === memberId);
+        // Hint: Use this.members.find() to locate member by memberId
     }
     
     // Find item by ID
     findItem(itemId) {
-        return this.items.find(item => item.id === itemId);
+        // Hint: Use this.items.find() to locate item by id
     }
     
     // Search items by title
     searchByTitle(searchTerm) {
-        const results = this.items.filter(item => 
-            item.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        return results;
+        // Hint: Use filter with item.title.toLowerCase().includes()
     }
     
     // Search books by author
     searchByAuthor(authorName) {
-        const results = this.items.filter(item => 
-            item instanceof Book && 
-            item.author.toLowerCase().includes(authorName.toLowerCase())
-        );
-        return results;
+        // Hint: Use filter to find items that are instanceof Book
+        // And where author name includes search term
     }
     
     // Get all available items
     getAvailableItems() {
-        return this.items.filter(item => item.isAvailable);
+        // Hint: Filter items where isAvailable === true
     }
     
     // Get all borrowed items
     getBorrowedItems() {
-        return this.items.filter(item => !item.isAvailable);
+        // Hint: Filter items where isAvailable === false
     }
     
     // Get statistics
     getStatistics() {
-        const totalItems = this.items.length;
-        const availableItems = this.getAvailableItems().length;
-        const borrowedItems = this.getBorrowedItems().length;
-        const totalMembers = this.members.length;
-        
-        const books = this.items.filter(item => item instanceof Book).length;
-        const magazines = this.items.filter(item => item instanceof Magazine).length;
-        const dvds = this.items.filter(item => item instanceof DVD).length;
-        
-        return {
-            totalItems,
-            availableItems,
-            borrowedItems,
-            totalMembers,
-            books,
-            magazines,
-            dvds
-        };
+        // Hint: Calculate totals for items, members
+        // Use getAvailableItems() and getBorrowedItems()
+        // Use filter with instanceof to count books, magazines, dvds
+        // Return object with all statistics
     }
     
     // Print library info

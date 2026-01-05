@@ -28,43 +28,30 @@ Create a `User` class that ensures data is valid before creating the user.
 class User {
     constructor(username, email, age) {
         // Validation for username (must be at least 3 characters)
-        if (username.length < 3) {
-            throw new Error("Username must contain at least 3 characters");
-        }
+        // Hint: Check username.length < 3, throw Error if invalid
         
         // Validation for email (must contain @)
-        if (!email.includes("@")) {
-            throw new Error("Invalid email");
-        }
+        // Hint: Check email.includes("@"), throw Error if invalid
         
         // Validation for age (must be between 13 and 120)
-        // Write your code here
-        if (age < 13 || age > 120) {
-            throw new Error("Age must be between 13 and 120");
-        }
+        // Hint: Check age < 13 || age > 120, throw Error if invalid
         
-        this.username = username;
-        this.email = email;
-        this.age = age;
-        this.createdAt = new Date();
-        this.isActive = true;
+        // Initialize all properties: username, email, age
+        // Also set: createdAt = new Date(), isActive = true
     }
     
     deactivate() {
-        // Write your code here
-        this.isActive = false;
+        // Hint: Set this.isActive to false
     }
     
     activate() {
-        // Write your code here
-        this.isActive = true;
+        // Hint: Set this.isActive to true
     }
     
     getAccountAge() {
-        const now = new Date();
-        const diff = now - this.createdAt;
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        return days;
+        // Hint: Get current date with new Date()
+        // Calculate difference: now - this.createdAt
+        // Convert milliseconds to days: Math.floor(diff / (1000 * 60 * 60 * 24))
     }
     
     getUserInfo() {
@@ -137,15 +124,13 @@ class TodoItem {
     }
     
     complete() {
-        // Write your code here
-        this.completed = true;
-        this.completedAt = new Date();
+        // Hint: Set completed to true
+        // Set completedAt to new Date()
     }
     
     uncomplete() {
-        // Write your code here
-        this.completed = false;
-        this.completedAt = null;
+        // Hint: Set completed to false
+        // Set completedAt to null
     }
     
     getInfo() {
@@ -167,48 +152,36 @@ class TodoList {
     }
     
     addItem(title, description = "", priority = "medium") {
-        const item = new TodoItem(title, description, priority);
-        // Write your code here
-        this.items.push(item);
-        console.log(`New task added: ${item.title}`);
-        return item;
+        // Hint: Create new TodoItem
+        // Push to this.items array
+        // console.log success message
+        // Return the item
     }
     
     removeItem(id) {
-        const index = this.items.findIndex(item => item.id === id);
-        if (index !== -1) {
-            const removed = this.items.splice(index, 1)[0];
-            console.log(`Task deleted: ${removed.title}`);
-            return true;
-        }
-        return false;
+        // Hint: Use findIndex to find item by id
+        // If found (index !== -1), use splice to remove
+        // console.log success message and return true
+        // Otherwise return false
     }
     
     completeItem(id) {
-        const item = this.items.find(item => item.id === id);
-        if (item) {
-            // Write your code here
-            item.complete();
-            console.log(`Task completed: ${item.title}`);
-            return true;
-        }
-        return false;
+        // Hint: Use find to locate item by id
+        // If found, call item.complete()
+        // console.log success message and return true
+        // Otherwise return false
     }
     
     getCompletedItems() {
-        // Hint: use filter
-        // Write your code here
-        return this.items.filter(item => item.completed);
+        // Hint: Use this.items.filter() to return items where completed === true
     }
     
     getPendingItems() {
-        // Write your code here
-        return this.items.filter(item => !item.completed);
+        // Hint: Use this.items.filter() to return items where completed === false
     }
     
     getItemsByPriority(priority) {
-        // Write your code here
-        return this.items.filter(item => item.priority === priority);
+        // Hint: Use filter to return items where item.priority equals the priority parameter
     }
     
     listItems() {

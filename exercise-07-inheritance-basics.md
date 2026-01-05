@@ -41,12 +41,14 @@ class Dog extends Animal {
     constructor(name, age, breed) {
         // Call parent constructor with super
         super(name, age);
-        this.breed = breed; // Dog's breed
+        // Add Dog's unique property: breed
+        // Hint: this.breed = breed
     }
     
     // Override makeSound method
     makeSound() {
-        console.log(`${this.name} barks: Woof woof! 🐕`);
+        // Hint: console.log with dog barking sound
+        // Format: "[name] barks: Woof woof! 🐕"
     }
     
     // Add unique method for Dog
