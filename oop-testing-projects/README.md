@@ -15,31 +15,31 @@ Learn OOP and Testing together through real-world projects! Each project builds 
    - Learn: Private fields, validation, error handling, test edge cases
    - Create a banking system with deposits and withdrawals
 
-3. **[Project 03 - Contact Book](./project-03-contact-book/)**
-   - Learn: CRUD operations, search/filter, object manipulation
-   - Build a contact management system
+3. **[Project 03 - Library System](./project-03-library-system/)**
+   - Learn: Multiple classes, relationships, borrowing logic
+   - Build a library management system with books, members, and loans
 
 ### 🟡 Intermediate Level
-4. **[Project 04 - Library Management](./project-04-library/)**
-   - Learn: Multiple classes, relationships, inheritance
-   - Manage books, members, and borrowing system
+4. **[Project 04 - E-commerce Shopping Cart](./project-04-shopping-cart/)**
+   - Learn: Complex calculations, inventory, pricing strategies
+   - Build a complete shopping cart with products, discounts, and checkout
 
-5. **[Project 05 - E-commerce Shopping Cart](./project-05-shopping-cart/)**
-   - Learn: Complex objects, calculations, state management
-   - Build a complete shopping cart with discounts
+5. **[Project 05 - Blog System](./project-05-blog-system/)**
+   - Learn: Content management, user roles, nested comments
+   - Create a blogging platform with posts, comments, and categories
 
-6. **[Project 06 - Blog System](./project-06-blog/)**
-   - Learn: User authentication, comments, nested objects
-   - Create a blogging platform
+6. **[Project 06 - RPG Game System](./project-06-game-system/)**
+   - Learn: Combat mechanics, inventory, skill systems
+   - Create an RPG with characters, items, and turn-based combat
 
 ### 🔴 Advanced Level
-7. **[Project 07 - Social Media Feed](./project-07-social-media/)**
-   - Learn: Polymorphism, design patterns, complex testing
-   - Build a social media posting system
+7. **[Project 07 - Hotel Booking System](./project-07-hotel-booking/)**
+   - Learn: Date handling, reservations, complex business logic
+   - Build a hotel management system with rooms, bookings, and pricing
 
-8. **[Project 08 - Game Character System](./project-08-game-system/)**
-   - Learn: Advanced OOP, inheritance chains, interfaces
-   - Create an RPG character and battle system
+8. **[Project 08 - Social Network Platform](./project-08-social-network/)**
+   - Learn: Social features, feeds, messaging, notifications
+   - Create a social network with posts, friends, and interactions
 
 ## 🚀 How to Use These Projects
 
